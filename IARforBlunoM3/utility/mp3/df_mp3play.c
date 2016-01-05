@@ -5,6 +5,7 @@
 #include "stdlib.h"
 #include "string.h"
 #include "stdio.h"
+#include "audioplay.h"
 
 
 __mp3ctrl * mp3ctrl;        //the global variable for handle the mp3 data contrl block.
@@ -20,7 +21,15 @@ void mp3_fill_buffer(uint16_t* buf,uint16_t size,uint8_t nch){
 }
 
 uint8_t mp3_id3v1_decode(uint8_t* buf,__mp3ctrl *pctrl){
-
+    
+    ID3V1_Tag *id3v1tag;
+	id3v1tag=(ID3V1_Tag*)buf;
+	if (strncmp("TAG",(char*)id3v1tag->id,3)==0)//是MP3 ID3V1 TAG
+	{
+		if(id3v1tag->title[0])strncpy((char*)pctrl->title,(char*)id3v1tag->title,30);
+		if(id3v1tag->artist[0])strncpy((char*)pctrl->artist,(char*)id3v1tag->artist,30); 
+	}else return 1;
+	return 0;
 
 }
 
@@ -82,7 +91,7 @@ uint8_t mp3_get_info(uint8_t *pname,__mp3ctrl* pctrl){
 	buf= (u8 *)malloc(5*1024);		//申请5K内存 
 	if(fmp3&&buf)//内存申请成功
 	{ 		
-		f_open(fmp3,(const TCHAR*)pname,FA_READ);//打开文件
+		res = f_open(fmp3,(const TCHAR*)pname,FA_READ);//打开文件
 		res=f_read(fmp3,(char*)buf,5*1024,&br);
 		if(res==0)//读取文件成功,开始解析ID3V2/ID3V1以及获取MP3信息
 		{  
@@ -141,18 +150,171 @@ uint8_t mp3_get_info(uint8_t *pname,__mp3ctrl* pctrl){
 		} 
 		f_close(fmp3);
 	}else res=0XFF;
-	myfree(fmp3);
-	myfree(buf);	
+	free(fmp3);
+	free(buf);	
 	return res;	
 
   
   
 }
+
+u32 mp3_file_seek(u32 pos)
+{
+	if(pos>audiodev.file->fsize)
+	{
+		pos=audiodev.file->fsize;
+	}
+	f_lseek(audiodev.file,pos);
+	return audiodev.file->fptr;
+}
+
+
+
 uint8_t mp3_play_song(uint8_t* fname){
   
-    
-  
-  
+    HMP3Decoder mp3decoder;
+	MP3FrameInfo mp3frameinfo;
+	u8 res;
+	u8* buffer;		//输入buffer  
+	u8* readptr;	//MP3解码读指针
+	int offset=0;	//偏移量
+	int outofdata=0;//超出数据范围
+	int bytesleft=0;//buffer还剩余的有效数据
+	u32 br=0; 
+	int err=0;  
+	
+ 	mp3ctrl=malloc(sizeof(__mp3ctrl)); 
+	buffer=malloc(MP3_FILE_BUF_SZ); 	//申请解码buf大小
+	audiodev.file=(FIL*)malloc(sizeof(FIL));
+	audiodev.i2sbuf1=malloc(2304*2);
+	audiodev.i2sbuf2=malloc(2304*2);
+	audiodev.tbuf=malloc(2304*2);
+	audiodev.file_seek=mp3_file_seek;
+	
+	if(!mp3ctrl||!buffer||!audiodev.file||!audiodev.i2sbuf1||!audiodev.i2sbuf2||!audiodev.tbuf)//内存申请失败
+	{
+		free( mp3ctrl);
+		free( buffer);
+		free( audiodev.file);
+		free( audiodev.i2sbuf1);
+		free( audiodev.i2sbuf2);
+		free( audiodev.tbuf); 
+		return AP_ERR;	//错误
+	} 
+	memset(audiodev.i2sbuf1,0,2304*2);	//数据清零 
+	memset(audiodev.i2sbuf2,0,2304*2);	//数据清零 
+	memset(mp3ctrl,0,sizeof(__mp3ctrl));//数据清零 
+	res=mp3_get_info(fname,mp3ctrl); 
+#if 0
+	if(res==0)
+	{ 
+		printf("     title:%s\r\n",mp3ctrl->title); 
+		printf("    artist:%s\r\n",mp3ctrl->artist); 
+		printf("   bitrate:%dbps\r\n",mp3ctrl->bitrate);	
+		printf("samplerate:%d\r\n", mp3ctrl->samplerate);	
+		printf("  totalsec:%d\r\n",mp3ctrl->totsec); 
+		
+		WM8978_I2S_Cfg(2,0);	//飞利浦标准,16位数据长度
+		I2S2_Init(0,2,0,1);		//飞利浦标准,主机发送,时钟低电平有效,16位扩展帧长度
+	 
+		I2S2_SampleRate_Set(mp3ctrl->samplerate);		//设置采样率 
+		I2S2_TX_DMA_Init(audiodev.i2sbuf1,audiodev.i2sbuf2,mp3ctrl->outsamples);//配置TX DMA
+		//i2s_tx_callback=mp3_i2s_dma_tx_callback;		//回调函数指向mp3_i2s_dma_tx_callback  jansion
+		mp3decoder=MP3InitDecoder(); 					//MP3解码申请内存
+		res=f_open(audiodev.file,(char*)fname,FA_READ);	//打开文件
+	}
+	if(res==0&&mp3decoder!=0)//打开文件成功
+	{ 
+		f_lseek(audiodev.file,mp3ctrl->datastart);	//跳过文件头中tag信息
+		audio_start();								//开始播放 
+		while(res==0)
+		{
+			readptr=buffer;	//MP3读指针指向buffer
+			offset=0;		//偏移量为0
+			outofdata=0;	//数据正常
+			bytesleft=0;	
+			res=f_read(audiodev.file,buffer,MP3_FILE_BUF_SZ,&br);//一次读取MP3_FILE_BUF_SZ字节
+			if(res)//读数据出错了
+			{
+				res=AP_ERR;
+				break;
+			}
+			if(br==0)		//读数为0,说明解码完成了.
+			{
+				res=AP_OK;	//播放完成
+				break;
+			}
+			bytesleft+=br;	//buffer里面有多少有效MP3数据?
+			err=0;			
+			while(!outofdata)//没有出现数据异常(即可否找到帧同步字符)
+			{
+				offset=MP3FindSyncWord(readptr,bytesleft);//在readptr位置,开始查找同步字符
+				if(offset<0)	//没有找到同步字符,跳出帧解码循环
+				{ 
+					outofdata=1;//没找到帧同步字符
+				}else	//找到同步字符了
+				{
+					readptr+=offset;		//MP3读指针偏移到同步字符处.
+					bytesleft-=offset;		//buffer里面的有效数据个数,必须减去偏移量
+					err=MP3Decode(mp3decoder,&readptr,&bytesleft,(short*)audiodev.tbuf,0);//解码一帧MP3数据
+					if(err!=0)
+					{
+						printf("decode error:%d\r\n",err);
+						break;
+					}else
+					{
+						MP3GetLastFrameInfo(mp3decoder,&mp3frameinfo);	//得到刚刚解码的MP3帧信息
+						if(mp3ctrl->bitrate!=mp3frameinfo.bitrate)		//更新码率
+						{
+							mp3ctrl->bitrate=mp3frameinfo.bitrate; 
+						}
+						mp3_fill_buffer((u16*)audiodev.tbuf,mp3frameinfo.outputSamps,mp3frameinfo.nChans);//填充pcm数据
+					}
+					if(bytesleft<MAINBUF_SIZE*2)//当数组内容小于2倍MAINBUF_SIZE的时候,必须补充新的数据进来.
+					{ 
+						memmove(buffer,readptr,bytesleft);//移动readptr所指向的数据到buffer里面,数据量大小为:bytesleft
+						f_read(audiodev.file,buffer+bytesleft,MP3_FILE_BUF_SZ-bytesleft,&br);//补充余下的数据
+						if(br<MP3_FILE_BUF_SZ-bytesleft)
+						{
+							memset(buffer+bytesleft+br,0,MP3_FILE_BUF_SZ-bytesleft-br); 
+						}
+						bytesleft=MP3_FILE_BUF_SZ;  
+						readptr=buffer; 
+					} 	
+ 					while(audiodev.status&(1<<1))//正常播放中
+					{			 
+						//delay_ms(1000/OS_TICKS_PER_SEC);             //jansion
+						mp3_get_curtime(audiodev.file,mp3ctrl); 
+						audiodev.totsec=mp3ctrl->totsec;	//参数传递
+						audiodev.cursec=mp3ctrl->cursec;
+						audiodev.bitrate=mp3ctrl->bitrate;
+						audiodev.samplerate=mp3ctrl->samplerate;
+						audiodev.bps=16;//MP3仅支持16位
+ 						if(audiodev.status&0X01)break;//没有按下暂停 
+					}
+					if((audiodev.status&(1<<1))==0)//请求结束播放/播放完成
+					{  
+						res=AP_NEXT;//跳出上上级循环
+						outofdata=1;//跳出上一级循环
+						break;
+					}  
+				}					
+			}  
+		}
+		audio_stop();//关闭音频输出
+	}else res=AP_ERR;//错误
+	f_close(audiodev.file);
+	MP3FreeDecoder(mp3decoder);		//释放内存	
+	free( mp3ctrl);
+	free( buffer);
+	free( audiodev.file);
+	free( audiodev.i2sbuf1);
+	free( audiodev.i2sbuf2);
+	free( audiodev.tbuf);
+	return res;
+
+
+#endif
   
   
 }

@@ -181,9 +181,15 @@
   </group>
   <group>
     <name>Driver</name>
-  </group>
-  <group>
-    <name>Hal</name>
+    <file>
+      <name>$PROJ_DIR$\..\driver\stm\df_usart1.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\driver\senor\sd.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\driver\stm\spi.c</name>
+    </file>
   </group>
   <group>
     <name>library</name>
@@ -194,10 +200,22 @@
       <name>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\src\stm32f10x_tim.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.c</name>
+    </file>
+  </group>
+  <group>
+    <name>Plus</name>
+    <file>
+      <name>$PROJ_DIR$\..\user\fputc_dump.c</name>
     </file>
   </group>
   <group>
@@ -268,6 +286,9 @@
   </group>
   <group>
     <name>user</name>
+    <file>
+      <name>$PROJ_DIR$\..\user\common.c</name>
+    </file>
     <file>
       <name>$PROJ_DIR$\..\user\main.c</name>
     </file>

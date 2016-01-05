@@ -261,7 +261,7 @@ TCHAR* f_gets (TCHAR* buff, int len, FIL* fp);						/* Get a string from the fil
 
 /* RTC function */
 #if !_FS_READONLY && !_FS_NORTC
-DWORD get_fattime (void);
+int get_fattime (void);
 #endif
 
 /* Unicode support functions */

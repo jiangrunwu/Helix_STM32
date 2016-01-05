@@ -34,13 +34,7 @@ void SPIx_Init(void)
         GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
         GPIO_Init(GPIOB, &GPIO_InitStructure);
-        
-        
-        
-        
-        
-        
-        
+
         
         
 	SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;  //设置SPI单向或者双向的数据模式:SPI设置为双线双向全双工

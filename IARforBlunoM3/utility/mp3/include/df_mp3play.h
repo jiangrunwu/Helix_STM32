@@ -6,7 +6,7 @@
 
 #define MP3_TITSIZE_MAX		40		//歌曲名字最大长度
 #define MP3_ARTSIZE_MAX		40		//歌曲名字最大长度
-#define MP3_FILE_BUF_SZ    5*1024	//MP3解码时,文件buf大小
+#define MP3_FILE_BUF_SZ    2*1024	//MP3解码时,文件buf大小
 
 
 //ID3V1 标签 

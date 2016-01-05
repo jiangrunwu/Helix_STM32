@@ -45,7 +45,15 @@
 #define LOW            0
 
 
-extern void digitalWrite( uint32_t ulPin, uint32_t ulVal );
+void digitalWrite( uint32_t ulPin, uint32_t ulVal ){
+
+
+  if (ulVal == HIGH)
+      GPIO_SetBits(GPIOB, GPIO_Pin_5);
+  else
+      GPIO_ResetBits(GPIOB, GPIO_Pin_5);
+
+}
 
 const int slaveSelectPin = 4;
 uint8_t  SD_Type=0;

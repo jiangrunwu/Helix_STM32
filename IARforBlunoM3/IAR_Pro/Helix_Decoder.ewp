@@ -70,16 +70,16 @@
         <option>
           <name>GRuntimeLibSelect</name>
           <version>0</version>
-          <state>1</state>
+          <state>2</state>
         </option>
         <option>
           <name>GRuntimeLibSelectSlave</name>
           <version>0</version>
-          <state>1</state>
+          <state>2</state>
         </option>
         <option>
           <name>RTDescription</name>
-          <state>Use the normal configuration of the C/C++ runtime library. No locale interface, C locale, no file descriptor support, no multibytes in printf and scanf, and no hex floats in strtod.</state>
+          <state>Use the full configuration of the C/C++ runtime library. Full locale interface, C locale, file descriptor support, multibytes in printf and scanf, and hex floats in strtod.</state>
         </option>
         <option>
           <name>OGProductVersion</name>
@@ -115,7 +115,7 @@
         </option>
         <option>
           <name>GenStdoutInterface</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>GeneralMisraRules98</name>
@@ -133,7 +133,7 @@
         </option>
         <option>
           <name>RTConfigPath2</name>
-          <state>$TOOLKIT_DIR$\INC\c\DLib_Config_Normal.h</state>
+          <state>$TOOLKIT_DIR$\INC\c\DLib_Config_Full.h</state>
         </option>
         <option>
           <name>GFPUCoreSlave</name>
@@ -695,11 +695,11 @@
         </option>
         <option>
           <name>IlinkMapFile</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>IlinkLogFile</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>IlinkLogInitialization</name>
@@ -1914,9 +1914,15 @@
   </group>
   <group>
     <name>Driver</name>
-  </group>
-  <group>
-    <name>Hal</name>
+    <file>
+      <name>$PROJ_DIR$\..\driver\stm\df_usart1.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\driver\senor\sd.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\driver\stm\spi.c</name>
+    </file>
   </group>
   <group>
     <name>library</name>
@@ -1927,10 +1933,22 @@
       <name>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\src\stm32f10x_tim.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.c</name>
+    </file>
+  </group>
+  <group>
+    <name>Plus</name>
+    <file>
+      <name>$PROJ_DIR$\..\user\fputc_dump.c</name>
     </file>
   </group>
   <group>
@@ -2001,6 +2019,9 @@
   </group>
   <group>
     <name>user</name>
+    <file>
+      <name>$PROJ_DIR$\..\user\common.c</name>
+    </file>
     <file>
       <name>$PROJ_DIR$\..\user\main.c</name>
     </file>

@@ -1,16 +1,5 @@
----- MADD64 Matches (24 in 2 files) ----
-assembly.h (library\helix_mp3\codec\fixpt\real): * MADD64(sum, x, y)   (Windows only) sum [64-bit] += x [32-bit] * y [32-bit]
-assembly.h (library\helix_mp3\codec\fixpt\real):/* MADD64, SHL64, SAR64:
-assembly.h (library\helix_mp3\codec\fixpt\real):static inline Word64 MADD64(Word64 sum, int x, int y)
-polyphase.c (library\helix_mp3\codec\fixpt\real):	sum1L = MADD64(sum1L, vLo,  c1);	sum1L = MADD64(sum1L, vHi, -c2); \
-polyphase.c (library\helix_mp3\codec\fixpt\real):	sum1L = MADD64(sum1L, vLo,  c1); \
-polyphase.c (library\helix_mp3\codec\fixpt\real):		sum1L = MADD64(sum1L, vLo,  c1);	sum2L = MADD64(sum2L, vLo,  c2); \
-polyphase.c (library\helix_mp3\codec\fixpt\real):		sum1L = MADD64(sum1L, vHi, -c2);	sum2L = MADD64(sum2L, vHi,  c1); \
-polyphase.c (library\helix_mp3\codec\fixpt\real):	sum1L = MADD64(sum1L, vLo,  c1);	sum1L = MADD64(sum1L, vHi, -c2); \
-polyphase.c (library\helix_mp3\codec\fixpt\real):	sum1R = MADD64(sum1R, vLo,  c1);	sum1R = MADD64(sum1R, vHi, -c2); \
-polyphase.c (library\helix_mp3\codec\fixpt\real):	sum1L = MADD64(sum1L, vLo,  c1); \
-polyphase.c (library\helix_mp3\codec\fixpt\real):	sum1R = MADD64(sum1R, vLo,  c1); \
-polyphase.c (library\helix_mp3\codec\fixpt\real):		sum1L = MADD64(sum1L, vLo,  c1);	sum2L = MADD64(sum2L, vLo,  c2); \
-polyphase.c (library\helix_mp3\codec\fixpt\real):		sum1L = MADD64(sum1L, vHi, -c2);	sum2L = MADD64(sum2L, vHi,  c1); \
-polyphase.c (library\helix_mp3\codec\fixpt\real):		sum1R = MADD64(sum1R, vLo,  c1);	sum2R = MADD64(sum2R, vLo,  c2); \
-polyphase.c (library\helix_mp3\codec\fixpt\real):		sum1R = MADD64(sum1R, vHi, -c2);	sum2R = MADD64(sum2R, vHi,  c1); \
+---- get_fattime Matches (4 in 4 files) ----
+diskio.c (library\fat32):int get_fattime(void)
+ff.c (library\fat32):#define GET_FATTIME()	get_fattime()
+ff.h (library\fat32):DWORD get_fattime (void);
+ffconf.h (library\fat32):/  When timestamp feature is enabled (_FS_NORTC	== 0), get_fattime() function need

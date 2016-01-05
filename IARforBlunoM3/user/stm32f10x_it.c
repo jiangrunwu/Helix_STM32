@@ -190,7 +190,16 @@ extern volatile uint32_t ISusartDataDomming;
 void USART1_IRQHandler(void)
 {
   
-
+    //static uint8_t begin=0;
+	uint8_t u8InChar = 0xFF;
+	static uint8_t begin = 0;
+  
+    if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET){
+         // DF_GetKey();
+        u8InChar = USART_ReceiveData(USART1) & 0xFF;
+     
+	}
+			
 	
 }
 	

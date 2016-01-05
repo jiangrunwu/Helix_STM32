@@ -265,7 +265,7 @@ DRESULT disk_ioctl (
 }
 #endif
 
-/*
+
 
 int get_fattime(void)
 {
@@ -273,4 +273,4 @@ int get_fattime(void)
   
   return 0;
 
-}*/
+}
