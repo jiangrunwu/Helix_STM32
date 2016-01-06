@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 
-#pragma import(__use_no_semihosting_swi)
+//#pragma import(__use_no_semihosting_swi)
  
 // 声明外部函数，在main文件中定义
 extern int  DF_SendChar(int ch);

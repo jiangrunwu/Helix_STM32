@@ -18,11 +18,7 @@ int main(void)
     uint32_t tmpreg;
 
     bsp_init();
-    DF_SendChar('n');
-    DF_SendChar('i');
-    DF_SendChar('h');
-    DF_SendChar('a');
-    DF_SendChar('o');
+  
     printf("hello world\n");
     mp3_play_song("1:liuxijun.mp3");
 

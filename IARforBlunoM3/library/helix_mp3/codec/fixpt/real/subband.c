@@ -57,6 +57,9 @@
  *
  * Return:      0 on success,  -1 if null input pointers
  **************************************************************************************/
+
+
+
 int Subband(MP3DecInfo *mp3DecInfo, short *pcmBuf)
 {
 	int b;
@@ -77,7 +80,9 @@ int Subband(MP3DecInfo *mp3DecInfo, short *pcmBuf)
 		for (b = 0; b < BLOCK_SIZE; b++) {
 			FDCT32(mi->outBuf[0][b], sbi->vbuf + 0*32, sbi->vindex, (b & 0x01), mi->gb[0]);
 			FDCT32(mi->outBuf[1][b], sbi->vbuf + 1*32, sbi->vindex, (b & 0x01), mi->gb[1]);
-			PolyphaseStereo(pcmBuf, sbi->vbuf + sbi->vindex + VBUF_LENGTH * (b & 0x01), polyCoef);
+			//PolyphaseStereo(pcmBuf, sbi->vbuf + sbi->vindex + VBUF_LENGTH * (b & 0x01), polyCoef);
+			xmp3_PolyphaseStereo(pcmBuf, sbi->vbuf + sbi->vindex + VBUF_LENGTH * (b & 0x01), polyCoef);
+
 			sbi->vindex = (sbi->vindex - (b & 0x01)) & 7;
 			pcmBuf += (2 * NBANDS);
 		}
@@ -85,7 +90,8 @@ int Subband(MP3DecInfo *mp3DecInfo, short *pcmBuf)
 		/* mono */
 		for (b = 0; b < BLOCK_SIZE; b++) {
 			FDCT32(mi->outBuf[0][b], sbi->vbuf + 0*32, sbi->vindex, (b & 0x01), mi->gb[0]);
-			PolyphaseMono(pcmBuf, sbi->vbuf + sbi->vindex + VBUF_LENGTH * (b & 0x01), polyCoef);
+			//PolyphaseMono(pcmBuf, sbi->vbuf + sbi->vindex + VBUF_LENGTH * (b & 0x01), polyCoef);
+			xmp3_PolyphaseMono(pcmBuf, sbi->vbuf + sbi->vindex + VBUF_LENGTH * (b & 0x01), polyCoef);
 			sbi->vindex = (sbi->vindex - (b & 0x01)) & 7;
 			pcmBuf += NBANDS;
 		}

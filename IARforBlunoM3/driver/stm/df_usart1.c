@@ -67,7 +67,7 @@ int DF_Usart1Init(void){
 
     USART_Cmd(USART1, ENABLE);   
 
-
+    return 0;
 
 
 

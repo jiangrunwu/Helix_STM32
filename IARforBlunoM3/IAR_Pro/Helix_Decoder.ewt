@@ -182,6 +182,12 @@
   <group>
     <name>Driver</name>
     <file>
+      <name>$PROJ_DIR$\..\driver\stm\df_i2c.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\driver\stm\df_i2s.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\driver\stm\df_usart1.c</name>
     </file>
     <file>
@@ -189,6 +195,9 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\driver\stm\spi.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\driver\senor\wm8978\wm8978.c</name>
     </file>
   </group>
   <group>
@@ -221,12 +230,6 @@
   <group>
     <name>Third-Party Library</name>
     <group>
-      <name>ARM_Platform</name>
-      <file>
-        <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\arm\asmmisc_rvds.s</name>
-      </file>
-    </group>
-    <group>
       <name>Fat32</name>
       <file>
         <name>$PROJ_DIR$\..\library\fat32\diskio.c</name>
@@ -237,6 +240,12 @@
     </group>
     <group>
       <name>Helix_Decoder</name>
+      <file>
+        <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\arm\asmmisc.S</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\arm\asmpoly_thumb2.S</name>
+      </file>
       <file>
         <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\bitstream.c</name>
       </file>
@@ -266,9 +275,6 @@
       </file>
       <file>
         <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\mp3tabs.c</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\polyphase.c</name>
       </file>
       <file>
         <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\scalfact.c</name>
@@ -301,6 +307,9 @@
   </group>
   <group>
     <name>Utility</name>
+    <file>
+      <name>$PROJ_DIR$\..\utility\mp3\audioplay.c</name>
+    </file>
     <file>
       <name>$PROJ_DIR$\..\utility\mp3\df_mp3play.c</name>
     </file>

@@ -2,15 +2,18 @@
 
 <project>
   <fileVersion>2</fileVersion>
-  <fileChecksum>2029674559</fileChecksum>
+  <fileChecksum>129666501</fileChecksum>
   <configuration>
     <name>Debug</name>
     <outputs>
       <file>$PROJ_DIR$\..\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\iar\startup_stm32f10x_hd.s</file>
       <file>$PROJ_DIR$\..\CMSIS\CM3\CoreSupport\core_cm3.c</file>
+      <file>$PROJ_DIR$\..\driver\stm\df_i2c.c</file>
+      <file>$PROJ_DIR$\..\driver\stm\df_i2s.c</file>
       <file>$PROJ_DIR$\..\driver\stm\df_usart1.c</file>
       <file>$PROJ_DIR$\..\driver\senor\sd.c</file>
       <file>$PROJ_DIR$\..\driver\stm\spi.c</file>
+      <file>$PROJ_DIR$\..\driver\senor\wm8978\wm8978.c</file>
       <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\src\misc.c</file>
       <file>$PROJ_DIR$\..\user\fputc_dump.c</file>
       <file>$PROJ_DIR$\..\library\fat32\diskio.c</file>
@@ -19,104 +22,43 @@
       <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.c</file>
       <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\src\stm32f10x_tim.c</file>
       <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.c</file>
-      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\arm\asmmisc_rvds.s</file>
       <file>$PROJ_DIR$\..\library\fat32\ff.c</file>
       <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\buffers.c</file>
-      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\huffman.c</file>
+      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\arm\asmpoly_thumb2.S</file>
+      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\arm\asmmisc.S</file>
       <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\bitstream.c</file>
       <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\dct32.c</file>
       <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\dequant.c</file>
-      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\dqchan.c</file>
-      <file>$TOOLKIT_DIR$\CMSIS\Include\core_cmInstr.h</file>
-      <file>$PROJ_DIR$\..\library\fat32\integer.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\stdarg.h</file>
-      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_crc.h</file>
-      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_cec.h</file>
-      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_can.h</file>
-      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h</file>
-      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_bkp.h</file>
-      <file>$PROJ_DIR$\..\library\fat32\ffconf.h</file>
-      <file>$PROJ_DIR$\..\library\fat32\diskio.h</file>
-      <file>$PROJ_DIR$\..\library\fat32\ff.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\mp3tabs.o</file>
-      <file>$PROJ_DIR$\Debug\Obj\mp3dec.pbi</file>
-      <file>$PROJ_DIR$\..\user\include\stm32f10x_it.h</file>
-      <file>$PROJ_DIR$\..\driver\include\sd.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\DLib_Product_string.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\df_mp3play.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\df_mp3play.o</file>
-      <file>$PROJ_DIR$\Debug\Obj\mp3dec.o</file>
-      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\pub\mp3dec.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\string.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\dct32.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\mp3tabs.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\dequant.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\huffman.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\dqchan.pbi</file>
-      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\assembly.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\hufftabs.pbi</file>
-      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dac.h</file>
-      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\hufftabs.c</file>
-      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\imdct.c</file>
       <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\mp3tabs.c</file>
+      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\dqchan.c</file>
+      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\huffman.c</file>
+      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\imdct.c</file>
+      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\hufftabs.c</file>
       <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\mp3dec.c</file>
       <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\stproc.c</file>
       <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\trigtabs_fixpt.c</file>
-      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\polyphase.c</file>
       <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\scalfact.c</file>
       <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\subband.c</file>
       <file>$PROJ_DIR$\..\user\common.c</file>
       <file>$PROJ_DIR$\..\user\main.c</file>
       <file>$PROJ_DIR$\..\user\stm32f10x_it.c</file>
       <file>$PROJ_DIR$\..\user\system_stm32f10x.c</file>
+      <file>$PROJ_DIR$\..\utility\mp3\audioplay.c</file>
       <file>$PROJ_DIR$\..\utility\mp3\df_mp3play.c</file>
-      <file>$PROJ_DIR$\Debug\Obj\buffers.pbi</file>
-      <file>$PROJ_DIR$\..\CMSIS\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h</file>
-      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\coder.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\DLib_Threads.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\stm32f10x_gpio.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\misc.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\misc.o</file>
-      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\pub\mp3common.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\xencoding_limits.h</file>
-      <file>$PROJ_DIR$\Debug\Exe\Helix_Decoder.out</file>
-      <file>$PROJ_DIR$\Debug\Obj\stm32f10x_tim.o</file>
-      <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
       <file>$PROJ_DIR$\Debug\Obj\stm32f10x_tim.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\Helix_Decoder.pbd</file>
-      <file>$PROJ_DIR$\Debug\Obj\stm32f10x_gpio.o</file>
-      <file>$PROJ_DIR$\..\CMSIS\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h</file>
-      <file>$PROJ_DIR$\Debug\Exe\Helix_Decoder.bin</file>
-      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\main.o</file>
-      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\misc.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\system_stm32f10x.o</file>
-      <file>$PROJ_DIR$\Debug\Obj\startup_stm32f10x_hd.o</file>
-      <file>$PROJ_DIR$\Debug\Obj\system_stm32f10x.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\stm32f10x_it.o</file>
-      <file>$PROJ_DIR$\Debug\Obj\stm32f10x_it.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\stm32f10x_usart.o</file>
-      <file>$PROJ_DIR$\Debug\Obj\stm32f10x_usart.pbi</file>
-      <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
-      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h</file>
-      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h</file>
-      <file>$PROJ_DIR$\Helix_Decoder.icf</file>
-      <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\ystdio.h</file>
-      <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
-      <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
-      <file>$TOOLKIT_DIR$\lib\m7M_tl.a</file>
-      <file>$TOOLKIT_DIR$\inc\c\intrinsics.h</file>
-      <file>$TOOLKIT_DIR$\CMSIS\Include\core_cm3.h</file>
-      <file>$TOOLKIT_DIR$\CMSIS\Include\core_cmFunc.h</file>
-      <file>$TOOLKIT_DIR$\inc\c\cmsis_iar.h</file>
-      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dma.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\ff.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\spi.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\diskio.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\imdct.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\stproc.pbi</file>
+      <file>$PROJ_DIR$\..\CMSIS\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\scalfact.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\subband.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\sd.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\c\cmsis_iar.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\trigtabs_fixpt.pbi</file>
+      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dma.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\bitstream.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\dct32.o</file>
       <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_flash.h</file>
       <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_exti.h</file>
       <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dbgmcu.h</file>
@@ -130,23 +72,58 @@
       <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h</file>
       <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h</file>
       <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\sd.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\spi.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\imdct.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\polyphase.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\scalfact.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\stproc.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\subband.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\trigtabs_fixpt.pbi</file>
-      <file>$PROJ_DIR$\Debug\Obj\dct32.o</file>
-      <file>$PROJ_DIR$\Debug\Obj\bitstream.o</file>
       <file>$PROJ_DIR$\Debug\Obj\buffers.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\df_mp3play.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\mp3dec.o</file>
+      <file>$TOOLKIT_DIR$\inc\c\string.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Product_string.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\df_mp3play.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\dct32.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\dequant.pbi</file>
+      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\pub\mp3dec.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\mp3tabs.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\huffman.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\dqchan.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\buffers.pbi</file>
+      <file>$PROJ_DIR$\..\CMSIS\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h</file>
+      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\coder.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\hufftabs.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f10x_gpio.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Threads.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\misc.pbi</file>
+      <file>$PROJ_DIR$\Debug\Exe\Helix_Decoder.out</file>
+      <file>$PROJ_DIR$\Debug\Obj\misc.o</file>
+      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\assembly.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\Helix_Decoder.pbd</file>
+      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dac.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\xencoding_limits.h</file>
+      <file>$PROJ_DIR$\..\library\fat32\ffconf.h</file>
+      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\pub\mp3common.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f10x_tim.o</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f10x_gpio.o</file>
+      <file>$PROJ_DIR$\..\library\fat32\integer.h</file>
+      <file>$TOOLKIT_DIR$\CMSIS\Include\core_cmInstr.h</file>
+      <file>$PROJ_DIR$\..\library\fat32\diskio.h</file>
+      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_crc.h</file>
+      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_can.h</file>
+      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_cec.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\mp3tabs.o</file>
+      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h</file>
+      <file>$PROJ_DIR$\..\user\include\stm32f10x_it.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\mp3dec.pbi</file>
+      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_bkp.h</file>
+      <file>$PROJ_DIR$\..\driver\include\sd.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdarg.h</file>
+      <file>$PROJ_DIR$\..\library\fat32\ff.h</file>
       <file>$PROJ_DIR$\Debug\Obj\dequant.o</file>
       <file>$PROJ_DIR$\Debug\Obj\dqchan.o</file>
       <file>$PROJ_DIR$\Debug\Obj\huffman.o</file>
       <file>$PROJ_DIR$\Debug\Obj\hufftabs.o</file>
       <file>$PROJ_DIR$\Debug\Obj\imdct.o</file>
-      <file>$PROJ_DIR$\Debug\Obj\polyphase.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\df_i2c.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\df_i2c.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\scalfact.o</file>
       <file>$PROJ_DIR$\Debug\Obj\stproc.o</file>
       <file>$PROJ_DIR$\Debug\Obj\subband.o</file>
@@ -154,68 +131,137 @@
       <file>$PROJ_DIR$\Debug\Obj\bitstream.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\spi.o</file>
       <file>$PROJ_DIR$\Debug\Obj\ff.o</file>
-      <file>$PROJ_DIR$\Debug\Obj\asmmisc_rvds.o</file>
-      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\pub\statname.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\sd.o</file>
       <file>$PROJ_DIR$\..\user\include\stm32f10x_conf.h</file>
       <file>$PROJ_DIR$\..\utility\mp3\include\df_mp3play.h</file>
       <file>$PROJ_DIR$\Debug\Obj\diskio.o</file>
       <file>$PROJ_DIR$\Debug\Obj\common.o</file>
-      <file>$TOOLKIT_DIR$\inc\c\stdlib.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\common.pbi</file>
       <file>$PROJ_DIR$\..\driver\include\spi.h</file>
+      <file>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\pub\statname.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\sd.o</file>
       <file>$PROJ_DIR$\Debug\Obj\df_usart1.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\df_usart1.o</file>
       <file>$PROJ_DIR$\Debug\Obj\fputc_dump.o</file>
       <file>$PROJ_DIR$\Debug\Obj\fputc_dump.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdlib.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\common.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\stm32f10x_rcc.o</file>
       <file>$PROJ_DIR$\Debug\Obj\stm32f10x_spi.o</file>
       <file>$PROJ_DIR$\Debug\Obj\stm32f10x_rcc.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\stm32f10x_spi.pbi</file>
       <file>$PROJ_DIR$\..\user\include\audioplay.h</file>
       <file>$PROJ_DIR$\Debug\List\Helix_Decoder.map</file>
-      <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Full.h</file>
       <file>$TOOLKIT_DIR$\lib\dl7M_tlf.a</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Full.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\wm8978.o</file>
       <file>$PROJ_DIR$\..\user\include\common.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\wm8978.pbi</file>
+      <file>$PROJ_DIR$\..\driver\include\wm8978.h</file>
+      <file>$PROJ_DIR$\Debug\Exe\Helix_Decoder.bin</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.o</file>
+      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\misc.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\startup_stm32f10x_hd.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\system_stm32f10x.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\system_stm32f10x.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f10x_it.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f10x_it.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f10x_usart.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\stm32f10x_usart.pbi</file>
+      <file>$PROJ_DIR$\Helix_Decoder.icf</file>
+      <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\ystdio.h</file>
+      <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
+      <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
+      <file>$TOOLKIT_DIR$\lib\m7M_tl.a</file>
+      <file>$TOOLKIT_DIR$\inc\c\intrinsics.h</file>
+      <file>$TOOLKIT_DIR$\CMSIS\Include\core_cmFunc.h</file>
+      <file>$TOOLKIT_DIR$\CMSIS\Include\core_cm3.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\ff.pbi</file>
+      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h</file>
+      <file>$PROJ_DIR$\..\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h</file>
+      <file>$PROJ_DIR$\..\driver\include\df_i2c.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\df_i2s.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\df_i2s.o</file>
+      <file>$PROJ_DIR$\..\driver\include\df_i2s.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\audioplay.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\audioplay.o</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\asmmisc.o</file>
+      <file>$PROJ_DIR$\Debug\List\startup_stm32f10x_hd.lst</file>
+      <file>$PROJ_DIR$\Debug\List\asmmisc.lst</file>
+      <file>$PROJ_DIR$\Debug\List\asmpoly_thumb2.lst</file>
+      <file>$PROJ_DIR$\Debug\Obj\asmpoly_thumb2.o</file>
     </outputs>
     <file>
       <name>$PROJ_DIR$\..\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\iar\startup_stm32f10x_hd.s</name>
       <outputs>
         <tool>
           <name>AARM</name>
-          <file> 89</file>
+          <file> 157 185</file>
         </tool>
       </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\driver\stm\df_i2c.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 117</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 44 50 176 81 60 156 102 175 183 125 154 171 48 107 90 53 58 62 65 177 173 79 98 172 155 91 84 145 95 104 101 100 55 54 56 57 59 61 63 64 153</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\driver\stm\df_i2s.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 178</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 155 61 95 104 98 54 44 63 172 100 57 64 60 176 125 173 79 91 84 145 48 101 55 56 59 153 180 154 81 156 171 107 102 90 50 53 58 62 175 65</file>
+        </tool>
+      </inputs>
     </file>
     <file>
       <name>$PROJ_DIR$\..\driver\stm\df_usart1.c</name>
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 158</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 159</file>
+          <file> 132</file>
         </tool>
       </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 107 154 62 171 48 53 44 60 90 58 65 176 125 81 156 102 50 175 64 173 79 98 172 155 91 84 145 95 104 101 100 55 54 56 57 59 61 63 153</file>
+        </tool>
+      </inputs>
     </file>
     <file>
       <name>$PROJ_DIR$\..\driver\senor\sd.c</name>
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 124</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 150</file>
+          <file> 47</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 85 119 76 27 21 112 80 121 106 24 115 122 151 105 65 73 68 168 107 26 113 114 117 84 157 86 67 87 104 28 25 49 108 111 97 116 118 120 96 123</file>
+          <file> 155 61 95 104 98 54 44 63 172 100 57 64 125 173 79 91 84 145 48 101 55 56 59 153 129 154 81 156 171 107 102 90 50 53 176 58 60 62 175 65</file>
         </tool>
       </inputs>
     </file>
@@ -224,17 +270,28 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 125</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 146</file>
+          <file> 40</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 85 119 76 27 21 112 80 106 24 115 122 121 151 105 65 73 68 168 107 26 113 114 117 84 157 86 67 87 104 28 25 49 108 111 97 116 118 120 96 123</file>
+          <file> 155 61 95 104 98 54 44 172 100 57 64 63 125 173 79 91 84 145 48 101 55 56 59 153 129 154 81 156 171 107 102 90 50 53 176 58 60 62 175 65</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\driver\senor\wm8978\wm8978.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 148</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 54 44 125 98 155 95 104 61 177 172 100 57 64 63 173 79 91 84 145 48 101 55 56 59 153 176 149 154 81 156 171 107 102 90 50 53 58 60 62 175 65 183</file>
         </tool>
       </inputs>
     </file>
@@ -243,17 +300,13 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 70</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 71</file>
+          <file> 85</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 80 67 97 87 25 96 108 118 151 86 104 107 28 49 111 116 120 123 84 105 65 21 106 85 73 68 168 76 27 26 24 113 112 114 115 117 119 121 122</file>
+          <file> 44 81 176 156 102 175 50 60 125 154 171 48 107 90 53 58 62 65 153 173 79 98 172 155 91 84 145 95 104 101 100 55 54 56 57 59 61 63 64</file>
         </tool>
       </inputs>
     </file>
@@ -262,17 +315,13 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 161</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 160</file>
+          <file> 135</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 73 95 76 67 68 168 85 100 87 99</file>
+          <file> 91 165 95 81 84 145 155 167 156 166</file>
         </tool>
       </inputs>
     </file>
@@ -281,17 +330,13 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 110</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 153</file>
+          <file> 41</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 85 119 76 27 151 21 112 80 35 106 24 115 122 30 22 105 65 73 68 168 107 26 113 114 117 121 84 86 67 87 104 28 25 49 108 111 97 116 118 120 96 123</file>
+          <file> 155 61 95 104 125 98 54 44 108 172 100 57 64 99 97 173 79 91 84 145 48 101 55 56 59 63 153 154 81 156 171 107 102 90 50 53 176 58 60 62 175 65</file>
         </tool>
       </inputs>
     </file>
@@ -300,17 +345,13 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 69</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 79</file>
+          <file> 83</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 80 26 105 121 65 168 107 114 118 151 73 68 113 117 84 97 21 106 85 76 27 24 112 115 119 122 86 67 87 104 28 25 49 108 111 116 120 96 123</file>
+          <file> 44 101 173 63 79 145 48 56 60 125 91 84 55 59 153 176 98 172 155 95 104 100 54 57 61 64 154 81 156 171 107 102 90 50 53 58 62 175 65</file>
         </tool>
       </inputs>
     </file>
@@ -319,17 +360,13 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 164</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 162</file>
+          <file> 140</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 68 80 117 73 113 84 118 105 65 168 107 26 114 121 151 21 106 85 76 27 24 112 115 119 122 86 67 87 104 28 25 49 108 111 97 116 120 96 123</file>
+          <file> 84 44 59 91 55 153 60 173 79 145 48 101 56 63 125 98 172 155 95 104 100 54 57 61 64 154 81 156 171 107 102 90 50 53 176 58 62 175 65</file>
         </tool>
       </inputs>
     </file>
@@ -338,17 +375,13 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 165</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 163</file>
+          <file> 141</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 168 151 114 121 65 107 105 26 80 73 68 113 117 84 118 21 106 85 76 27 24 112 115 119 122 86 67 87 104 28 25 49 108 111 97 116 120 96 123</file>
+          <file> 145 125 56 63 79 48 173 101 44 91 84 55 59 153 60 98 172 155 95 104 100 54 57 61 64 154 81 156 171 107 102 90 50 53 176 58 62 175 65</file>
         </tool>
       </inputs>
     </file>
@@ -357,17 +390,13 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 77</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 75</file>
+          <file> 39</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 116 80 49 123 118 151 86 104 107 28 111 120 96 67 87 25 108 97 105 65 21 106 85 73 68 168 76 27 26 24 113 112 114 115 117 119 121 122 84</file>
+          <file> 58 44 90 65 60 125 154 171 48 107 53 62 175 81 156 102 50 176 173 79 98 172 155 91 84 145 95 104 101 100 55 54 56 57 59 61 63 64 153</file>
         </tool>
       </inputs>
     </file>
@@ -376,45 +405,28 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 94</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 93</file>
+          <file> 163</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 28 86 120 118 104 107 111 80 49 116 123 122 151 67 87 25 108 97 96 105 65 21 106 85 73 68 168 76 27 26 24 113 112 114 115 117 119 121 84</file>
+          <file> 107 154 62 60 171 48 53 44 90 58 65 64 125 81 156 102 50 176 175 173 79 98 172 155 91 84 145 95 104 101 100 55 54 56 57 59 61 63 153</file>
         </tool>
       </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\arm\asmmisc_rvds.s</name>
-      <outputs>
-        <tool>
-          <name>AARM</name>
-          <file> 148</file>
-        </tool>
-      </outputs>
     </file>
     <file>
       <name>$PROJ_DIR$\..\library\fat32\ff.c</name>
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 109</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 147</file>
+          <file> 174</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 22 67 73 76 85 31 30 23 68 168 29 87</file>
+          <file> 97 81 91 95 155 110 99 109 84 145 92 156</file>
         </tool>
       </inputs>
     </file>
@@ -423,59 +435,46 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 64</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 134</file>
+          <file> 78</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 73 149 85 67 66 95 87 155 68 168 76 72 40</file>
+          <file> 91 130 155 81 80 165 156 136 84 145 95 93 74</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\huffman.c</name>
+      <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\arm\asmpoly_thumb2.S</name>
       <outputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 45</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 137</file>
+          <name>AARM</name>
+          <file> 188 187</file>
         </tool>
       </outputs>
-      <inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\arm\asmmisc.S</name>
+      <outputs>
         <tool>
-          <name>BICOMP</name>
-          <file> 149 66 72 40</file>
+          <name>AARM</name>
+          <file> 184 186</file>
         </tool>
-      </inputs>
+      </outputs>
     </file>
     <file>
       <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\bitstream.c</name>
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 145</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 133 134 154 132 135 38 159 153 136 147 160 137 138 139 83 71 39 32 140 141 150 146 79 91 162 163 75 93 142 143 88 144</file>
+          <file> 122</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 47 66 72 149 40</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 66 72 40 149 47 15 155 67 85 87 168 76 73 68 95 59 29 31 22 18 19 63 152 151 27 80 105 86 21 107 104 106 65 28 26 25 24 49 113 108 112 111 114 97 115 116 117 118 119 120 121 96 122 123 84 41 36 99 100 166 2 7 30 35 20 14 6 16 50 51 60 170 5 53 52 56 57 3 157 4 8 61 34 9 10 11 12 54 58 62 55</file>
+          <file> 88 80 93 130 74</file>
         </tool>
       </inputs>
     </file>
@@ -484,17 +483,13 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 42</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 132</file>
+          <file> 72</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 66 47 72 40 149</file>
+          <file> 80 88 93 74 130</file>
         </tool>
       </inputs>
     </file>
@@ -503,83 +498,13 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 44</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 135</file>
+          <file> 73</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 47 72 40 66 149</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\dqchan.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 46</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 136</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 66 72 47 40 149</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>[ROOT_NODE]</name>
-      <outputs>
-        <tool>
-          <name>ILINK</name>
-          <file> 74 167</file>
-        </tool>
-      </outputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\hufftabs.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 48</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 138</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 149 72 66 40</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\imdct.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 126</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 139</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 47 66 72 40 149</file>
+          <file> 88 93 74 80 130</file>
         </tool>
       </inputs>
     </file>
@@ -588,17 +513,73 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 43</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 32</file>
+          <file> 75</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 149 40 72</file>
+          <file> 130 74 93</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\dqchan.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 77</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 80 93 88 74 130</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\huffman.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 76</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 130 80 93 74</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\imdct.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 88 80 93 74 130</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\hufftabs.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 82</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 130 93 80 74</file>
         </tool>
       </inputs>
     </file>
@@ -607,17 +588,13 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 33</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 39</file>
+          <file> 106</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 67 87 85 149 41 72 95 36 73 68 168 76 40</file>
+          <file> 81 156 155 130 69 93 165 70 91 84 145 95 74</file>
         </tool>
       </inputs>
     </file>
@@ -626,17 +603,13 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 129</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 142</file>
+          <file> 43</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 66 72 47 40 149</file>
+          <file> 80 93 88 74 130</file>
         </tool>
       </inputs>
     </file>
@@ -645,36 +618,13 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 131</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 144</file>
+          <file> 49</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 40 66 72 149</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\polyphase.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 127</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 140</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 66 72 47 149 40</file>
+          <file> 74 80 93 130</file>
         </tool>
       </inputs>
     </file>
@@ -683,17 +633,13 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 128</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 141</file>
+          <file> 45</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 149 66 72 40</file>
+          <file> 130 80 93 74</file>
         </tool>
       </inputs>
     </file>
@@ -702,17 +648,13 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 130</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 143</file>
+          <file> 46</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 72 47 149 66 40</file>
+          <file> 93 88 130 80 74</file>
         </tool>
       </inputs>
     </file>
@@ -721,17 +663,13 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 156</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 154</file>
+          <file> 137</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 22 31 29</file>
+          <file> 44 50 81 176 60 177 97 156 102 175 110 92 183 125 154 171 48 107 90 53 58 62 65 173 79 98 172 155 91 84 145 95 104 101 100 55 54 56 57 59 61 63 64 153</file>
         </tool>
       </inputs>
     </file>
@@ -740,17 +678,13 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 82</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 83</file>
+          <file> 151</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 85 119 80 76 27 170 21 112 31 29 67 166 151 106 24 115 122 152 99 105 65 73 68 168 107 26 113 114 117 121 84 40 100 86 87 104 28 25 49 108 111 97 116 118 120 96 123 22 95</file>
+          <file> 154 62 155 107 147 171 48 53 44 92 81 142 125 90 58 65 126 166 156 102 50 176 60 175 167 173 79 98 172 91 84 145 95 104 101 100 55 54 56 57 59 61 63 64 153 74 110 97 165</file>
         </tool>
       </inputs>
     </file>
@@ -759,17 +693,13 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 92</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 91</file>
+          <file> 161</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 86 120 67 28 104 107 111 80 96 49 116 123 112 99 151 87 25 108 97 118 95 85 34 105 65 21 106 73 68 168 76 27 26 24 113 114 115 117 119 121 122 84 100</file>
+          <file> 154 62 81 107 171 48 53 44 175 90 58 65 54 166 125 156 102 50 176 60 165 155 105 173 79 98 172 91 84 145 95 104 101 100 55 56 57 59 61 63 64 153 167</file>
         </tool>
       </inputs>
     </file>
@@ -778,17 +708,36 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 90</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 88</file>
+          <file> 159</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 85 119 76 27 21 112 80 106 24 115 122 151 105 65 73 68 168 107 26 113 114 117 121 84 86 67 87 104 28 25 49 108 111 97 116 118 120 96 123</file>
+          <file> 155 61 95 104 98 54 44 172 100 57 64 125 173 79 91 84 145 48 101 55 56 59 63 153 154 81 156 171 107 102 90 50 53 176 58 60 62 175 65</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\utility\mp3\audioplay.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 181</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 182 51 66 128 52 111 116 179 67 133 127 112 124 134 113 114 115 152 87 68 103 118 131 123 96 160 138 139 94 162 119 120 158 121 146</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 63 97 173 101 44 69 79 145 48 56 155 149 110 125 91 84 55 59 153 81 180 92 98 172 95 104 100 54 57 61 64 142 154 156 171 107 102 90 50 53 176 58 60 62 175 65 165 70</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 142 110 97 92 44 173 154 81 155 156 145 95 91 84 98 48 171 172 79 125 104 107 101 102 100 90 55 50 54 53 56 176 57 58 59 60 61 62 63 175 64 65 153 149 180 69 165 70 20 80 93 74 130 88 17 136 33 177 183 21 22 2 3 38 126 166 167 4 10 99 108 24 16 9 25 27 26 34 147 8 28 23 31 5 129 6 11 35 105 12 13 14 15 29 32 36 30 7</file>
         </tool>
       </inputs>
     </file>
@@ -797,36 +746,41 @@
       <outputs>
         <tool>
           <name>BICOMP</name>
-          <file> 37</file>
-        </tool>
-        <tool>
-          <name>ICCARM</name>
-          <file> 38</file>
+          <file> 71</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 40 25 80 96 155 97 29 95 152 99 149 108 118 86 104 107 85 31 41 166 72 28 49 111 116 120 123 151 67 87 36 100 66 27 26 24 113 112 114 115 117 119 121 122 84 105 65 21 106 73 68 168 76 22</file>
+          <file> 59 44 81 180 155 95 136 55 153 98 126 166 130 101 56 63 172 97 74 110 69 142 149 93 125 104 100 54 57 61 64 173 79 91 84 145 48 165 80 107 102 90 50 53 176 58 60 62 175 65 154 156 171 92 70 167</file>
         </tool>
       </inputs>
+    </file>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>ILINK</name>
+          <file> 86 143</file>
+        </tool>
+      </outputs>
     </file>
     <file>
       <name>$PROJ_DIR$\Debug\Exe\Helix_Decoder.out</name>
       <outputs>
         <tool>
           <name>ILINK</name>
-          <file> 167</file>
+          <file> 143</file>
         </tool>
         <tool>
           <name>OBJCOPY</name>
-          <file> 81</file>
+          <file> 150</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>ILINK</name>
-          <file> 98 148 133 134 154 132 135 38 159 153 136 147 160 137 138 139 83 71 39 32 140 141 150 146 89 79 91 162 163 75 93 142 143 88 144 101 102 103 169</file>
+          <file> 164 184 188 182 51 66 128 52 111 116 179 67 133 127 112 124 134 113 114 115 152 87 68 103 118 131 123 157 96 160 138 139 94 162 119 120 158 121 146 168 169 170 144</file>
         </tool>
       </inputs>
     </file>

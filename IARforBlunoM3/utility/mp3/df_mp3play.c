@@ -6,7 +6,8 @@
 #include "string.h"
 #include "stdio.h"
 #include "audioplay.h"
-
+#include "df_i2s.h"
+#include "wm8978.h"
 
 __mp3ctrl * mp3ctrl;        //the global variable for handle the mp3 data contrl block.
 
@@ -168,7 +169,12 @@ u32 mp3_file_seek(u32 pos)
 	return audiodev.file->fptr;
 }
 
-
+void mp3_get_curtime(FIL*fx,__mp3ctrl *mp3x)
+{
+	u32 fpos=0;  	 
+	if(fx->fptr>mp3x->datastart)fpos=fx->fptr-mp3x->datastart;	//得到当前文件播放到的地方 
+	mp3x->cursec=fpos*mp3x->totsec/(fx->fsize-mp3x->datastart);	//当前播放到第多少秒了?	
+}
 
 uint8_t mp3_play_song(uint8_t* fname){
   
@@ -205,7 +211,7 @@ uint8_t mp3_play_song(uint8_t* fname){
 	memset(audiodev.i2sbuf2,0,2304*2);	//数据清零 
 	memset(mp3ctrl,0,sizeof(__mp3ctrl));//数据清零 
 	res=mp3_get_info(fname,mp3ctrl); 
-#if 0
+
 	if(res==0)
 	{ 
 		printf("     title:%s\r\n",mp3ctrl->title); 
@@ -214,9 +220,9 @@ uint8_t mp3_play_song(uint8_t* fname){
 		printf("samplerate:%d\r\n", mp3ctrl->samplerate);	
 		printf("  totalsec:%d\r\n",mp3ctrl->totsec); 
 		
+
 		WM8978_I2S_Cfg(2,0);	//飞利浦标准,16位数据长度
-		I2S2_Init(0,2,0,1);		//飞利浦标准,主机发送,时钟低电平有效,16位扩展帧长度
-	 
+		
 		I2S2_SampleRate_Set(mp3ctrl->samplerate);		//设置采样率 
 		I2S2_TX_DMA_Init(audiodev.i2sbuf1,audiodev.i2sbuf2,mp3ctrl->outsamples);//配置TX DMA
 		//i2s_tx_callback=mp3_i2s_dma_tx_callback;		//回调函数指向mp3_i2s_dma_tx_callback  jansion
@@ -314,8 +320,7 @@ uint8_t mp3_play_song(uint8_t* fname){
 	return res;
 
 
-#endif
-  
+
   
 }
 

@@ -219,7 +219,10 @@ static inline int CLZ(int x)
 
 #elif defined ARM_ADS
 
+
 typedef long long Word64;
+
+
 #define MULSHIFT32	xmp3_MULSHIFT32
 extern int MULSHIFT32(int x, int y);
 

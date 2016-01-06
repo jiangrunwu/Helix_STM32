@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> <head> 
+<title>用户登录页面 - 21ic电子技术资料下载站</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> 
+<link rel="stylesheet" type="text/css" href="/2012/styles/dl_cate.css"/> 
+<link rel="stylesheet" type="text/css" href="/2012/styles/dl_global.css"/> 
+</head> 
+<body>
+<link rel="stylesheet" type="text/css" href="/css/colorbox.css" />
+<!-- 右侧边栏开始 -->
+<link rel="stylesheet" type="text/css"  href="/2015/help/css/lrtk.css"/>
+<script type="text/javascript" src="/2015/help/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/2015/help/js/lrtk.js"></script>
+<script src="/js/jquery.colorbox-min.js"></script>
+<!-- 右侧边栏结束 -->
+
+<!-- 右侧代码 开始 -->
+<div id="top"></div>
+<!-- 右侧代码 结束 -->
+
+
+<script type="text/javascript" src="http://misc.21ic.com/pub/topbar/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="http://misc.21ic.com/pub/topbar/js/topbar.js"></script>
+<!--[if IE 6]><script src="http://misc.21ic.com/pub/topbar/js/DD_belatedPNG_0.0.8a.js" mce_src="http://misc.21ic.com/pub/topbar/js/DD_belatedPNG_0.0.8a.js"></script><script type="text/javascript">DD_belatedPNG.fix('*');</script><![endif]-->
+<link rel="stylesheet" type="text/css" href="http://misc.21ic.com/pub/topbar/css/topline.css" />
+<script src="http://bbs.21ic.com/api/hdtj_zz.js"></script>
+<div class="topline_holder">
+  <div class="topline">
+  	<div class="topline_logo"><a href="http://www.21ic.com" target="_blank"><img src="http://misc.21ic.com/pub/topbar/images/topline_logo.png" title="21ic首页" /></a></div>
+        <ul class="topline_nav">
+                    <li><a class="topline_navone" href="http://www.21ic.com" target="_blank">首页</a></li>
+                    <li><a class="topline_navone" href="http://bbs.21ic.com" target="_blank">论坛</a></li>
+                    <li><a class="topline_navone" href="http://project.21ic.com" target="_blank">外包</a></li>
+                    <li><a class="topline_navone" href="http://dl.21ic.com" target="_blank">下载</a></li>
+                    <li><a class="topline_navone" href="http://www.21icsearch.com" target="_blank">Datasheet</a></li>
+                    <li id="top_all" class="" onMouseOver="showmenu1()" onMouseOut="hidemenu1()"><span class="topline_navone down_arrow1">更多</span>
+                        <div class="top_downmenu1" style="display:none; left:0;">
+                            <dl style="width:110px;">
+                                <dt>阅读</dt>
+                                <dd><a href="http://www.21ic.com/chongdian/" target="_blank">充电吧</a></dd>
+                                <dd><a href="http://www.21ic.com/zhuanfang/" target="_blank">21ic原创</a></dd>
+                                <dd><a href="http://www.21ic.com/zhuanfang/bianjishidian/" target="_blank">编辑视点</a></dd>
+                                <dd><a href="http://photo.21ic.com/" target="_blank" style="color:#c33; font-weight:bold;">图酷</a></dd>
+                                <dd><a href="http://www.21ic.com/wz/topic.htm" target="_blank">专题
+</a></dd>
+                                <dd><a href="http://www.21ic.com/expo/" target="_blank">会展</a></dd>
+                                <dd><a href="http://www.21ic.com/zhuanfang/gaoduanfangtan/" target="_blank">高端访谈</a></dd>
+                                <dd><a href="http://www.21ic.com/csdt/" target="_blank">厂商动态</a></dd>
+                                <dd><a href="http://www.21ic.com/wyzt/" target="_blank">网友杂谈</a></dd>
+                                <dd><a href="http://www.21ic.com/hr/" target="_blank">人才职场</a></dd>
+                            </dl>
+                            <dl class="top_list_2row">
+                                <dt>技术</dt>
+                                <dd><a href="http://embed.21ic.com/" target="_blank">嵌入式</a></dd>
+                                <dd><a href="http://power.21ic.com/" target="_blank">电源</a></dd>
+                                <dd><a href="http://auto.21ic.com/" target="_blank">汽车电子</a></dd>
+                                <dd><a href="http://www.21ic.com/mcu/" target="_blank">单片机</a></dd>
+                                <dd><a href="http://www.21ic.com/ce/" target="_blank">消费电子</a></dd>
+                                <dd><a href="http://www.21ic.com/test" target="_blank">测试测量</a></dd>
+                                <dd><a href="http://www.21ic.com/opto" target="_blank">显示光电</a></dd>
+                                <dd><a href="http://www.21ic.com/smart/" target="_blank">物联网</a></dd>
+                                <dd><a href="http://www.21ic.com/lighting/" target="_blank">照明</a></dd>
+                                <dd><a href="http://www.21ic.com/analog/" target="_blank">模拟</a></dd>
+                                <dd><a href="http://www.21ic.com/rf/" target="_blank">通信技术</a></dd>
+                                <dd><a href="http://www.21ic.com/eda/" target="_blank">EDA</a></dd>
+                                <dd><a href="http://www.21ic.com/computer/" target="_blank">智能硬件</a></dd>
+                                <dd><a href="http://www.21ic.com/control/" target="_blank">工业控制</a></dd>
+                                <dd><a href="http://www.21ic.com/med/" target="_blank">医疗电子</a></dd>
+                                <dd><a href="http://www.21ic.com/news/" target="_blank">资讯</a></dd>
+                                <dd><a href="http://www.21ic.com/np/" target="_blank">新品</a></dd>
+                                <dd><a href="http://www.21ic.com/app/" target="_blank">应用</a></dd>
+                                <dd><a href="http://www.21ic.com/zhuanfang/jishuzhuanfang/" target="_blank">技术专访</a></dd>
+                                <dd><a href="http://www.21ic.com/jichuzhishi" target="_blank">基础知识</a></dd>
+                            </dl>
+                            <dl style="width:130px;">
+                                <dt>互动</dt>
+                                <dd><a href="http://bbs.21ic.com/" target="_blank">论坛</a></dd>
+                                <dd><a href="http://project.21ic.com/" target="_blank" style="color:#c33; font-weight:bold;">外包</a></dd>
+                                <dd><a href="http://bbs.21ic.com/blog.php" target="_blank">博客</a></dd>
+                                <dt style="padding-top:20px;">课程</dt>
+                                <dd><a href="http://open.21ic.com/" target="_blank" style="color:#c33; font-weight:bold;">公开课</a></dd>
+                                <dd><a href="http://seminar.21ic.com/" target="_blank">在线研讨会</a></dd>
+                                <dd><a href="http://edu.21ic.com/" target="_blank" style="color:#c33; font-weight:bold;">TI在线培训</a></dd>
+                            </dl>
+                            <dl style="width:150px;">
+                                <dt>资源</dt>
+                                <dd><a href="http://dl.21ic.com" target="_blank">下载</a></dd>
+                                <!--<dd><a href="http://code.21ic.com" target="_blank" style="color:#c33; font-weight:bold;">源码</a></dd>-->
+                                <dd><a href="http://www.21ic.com/dianlu/" target="_blank">电路图</a></dd>
+                                <dd><a href="http://www.21icsearch.com/" target="_blank" style="color:#c33; font-weight:bold;">Datasheet</a></dd>
+                                <dd><a href="http://www.21ic.com/tools/" target="_blank">在线计算器</a></dd>
+                                <dd><a href="http://easypcb.21ic.com/" target="_blank">easyPCB布线工具</a></dd>
+                                <dd><a href="http://easysim.21ic.com/" target="_blank">easySim在线仿真</a></dd>
+                            </dl>
+                            <dl class="top_list_2row top_list_right">
+                                <dt>厂商</dt>
+                                <script type="text/javascript" src="http://misc.21ic.com/pub/topbar/js/cs.js"></script>
+                            </dl>
+                        </div>
+                    </li>
+         </ul>
+        <div id="top_code" class="" onmouseover="showmenu4()" onmouseout="hidemenu4()"><span class="down_arrow4"></span>
+            <div class="top_downmenu4" style="display:none;">
+                <div class="top_line_wxcode"><img src="http://misc.21ic.com/pub/topbar/images/wx.gif" /></div>
+                <div class="top_line_wxtxt">21ic官方微信</div>
+            </div>
+        </div>
+        <span id="top_userlogin"><div id="top_login" class="top_login"><span class="login_link"><a href="http://my.21ic.com/logging.php" rel="nofollow">登录</a>|<a href="http://my.21ic.com/member.php?mod=register&come_from=dl" rel="nofollow">注册</a></span></div></span>
+        <div class="top_search" style="width:317px;">
+            <div class="search">
+                <form method="get" action="http://dl.21ic.com/index.php?act=search.index" onsubmit="return checkinput();" name="formsearch" id="formsearch" target="_blank">
+		   <input type="hidden" value="search.index" name="act">
+                    <div class="sa" id="x1">
+		    <a id="s0">下载</a>
+                    <div class="lanmu" id="x2" style="display: none;">
+                    <a id="s1">IC库存</a>
+                    <a id="s2">Datasheet</a>
+                    <a id="s3">文章</a>
+                    <a id="s4">下载</a>
+
+                    </div>
+                    </div>
+                    <input name="keyword" value="请输入搜索关键词" onfocus="if(this.value=='请输入搜索关键词'){this.value='';}else{this.select();}this.style.color='black';" class="sb" id="topbar_q" />
+                    <input type="submit" name="sc" value="" class="sc" />
+                </form>
+            </div>
+        </div>  
+    </div>
+</div><div id="wrap">
+
+<div class="container">
+<!-- header begin -->
+<div class="header">
+
+<div class="logo">
+<div class="logo_left">
+<a title="进入下载首页" alt="进入下载首页" target="_self" href="/"><img border="0" src="/2012/images/logo2.jpg"></a>
+</div>
+<div class="logo_right">
+<iframe marginheight="0" marginwidth="0" frameborder="0" width="758" height="60" scrolling="no" src="http://21icim.qtmojo.com/main/s?user=21ic|DL|top&db=21icim&border=0&local=yes"></iframe>
+</div>
+</div>
+<div class="dl_nav">
+<span><a href="/index.php?act=user.upload"><img src="/2012/images/nav_rightbtn.gif" border="0" alt=""></a></span>
+<ul>
+<li><a href="/">下载首页</a></li>
+<li><a href="/category/sourcecode/" target="_blank">源&nbsp;&nbsp;&nbsp;&nbsp;码</a></li>
+<li><a href="/category/tools/">工具/软件</a></li>
+<li><a href="/category/ebook_code/">书籍/文档</a></li>
+<li><a href="http://dl.21ic.com/download/all-rank/">排行榜</a></li>
+<li><a href="/hotsoftware/index.html">常用软件</a></li>
+<li><a href="/ebook.html">ebook</a></li>
+<li><a href="http://dl.21ic.com/index.php?act=user.vip" target="_blank" style="color:#ff0;">VIP</a></li>
+<li><a href="http://dl.21ic.com/index.php?act=user.help" target="_blank" style="color:#ff0;">帮助中心</a></li>
+</ul>
+</div>
+<div id="ad_1" > 
+<iframe marginheight="0" marginwidth="0" frameborder="0" width="950" height="60" scrolling="no" src="http://21icim.qtmojo.com/main/s?user=21ic|DL|under_nav&db=21icim&border=0&local=yes"></iframe>
+</div>
+<div class="dl_search">
+<span class="login"><script src="/index.php?act=user.js_is_login"></script></span>
+<div class="searchbox">
+<form action="/search.php" method='get' onsubmit="return isempty_search();">
+<ul><li><input type="text"  name="keyword" class="text"></li>
+<li><input type="image" value="提交" name="Submit" src="/2012/images/search_btn.jpg"></li>
+<li class="high"><a href="http://dl.21ic.com/adv_search.html" target="_blank"><img src="/2012/images/btn_highsearch.jpg" border="0" alt=""></a></li>
+</ul>
+</form>
+</div>
+</div>
+</div>
+
+<div id="ad_2"  style="margin-top:5px">
+<iframe marginheight="0" marginwidth="0" frameborder="0" width="468" height="60" scrolling="no" src="http://21icim.qtmojo.com/main/s?user=21ic|DL|up_soft_left&db=21icim&border=0&local=yes">
+</iframe>
+<iframe marginheight="0" marginwidth="0" frameborder="0" width="468" height="60" scrolling="no" src="http://afp21ic.qtmojo.com/main/adfshow?user=Afp21ic|dl|dl_right&db=afp21ic&border=0&local=yes">
+</iframe></div>	
+<div class="main">
+    <div class="middleBox">
+		 <div class="middleBoxmiddle" id="login">
+           <div class="middleBox_left fl">
+               <h2><span class="middleBox_leftnexth2">&nbsp;&nbsp;&nbsp;已注册会员请从这里登录</span></h2>
+			   <FORM name=login_frm action=http://my.21ic.com/logging.php?action=login&loginsubmit=yes method=post name=frmUserInfo>
+               <table class="formtable1">
+                      <tr>
+                          <td class="formtdleft"><span class="red">*</span>&nbsp;用户名：</td>
+                          <td class="formtdright"><input type=text name=username size=15 maxlength=20 value=""></td>
+                      </tr>
+                      <tr>
+                          <td class="formtdleft"><span class="red">*</span>&nbsp;密码：</td>
+                          <td class="formtdright"><input type=password name=password size=15 maxlength=20 value=""></td>
+				<input type="hidden" name='refer' value='http://dl.21ic.com/download/code/armv7-m_-pdf-ic-39817.html'>
+                      </tr>
+                      <tr>
+                          <td colspan="2" style="text-align:center;"><input type="image" id="login_sub" src="/images/user_loginbtn.jpg" value="登录" name="M1" />&nbsp;&nbsp;&nbsp;<a class="orange" href="http://my.21ic.com/member.php?mod=register&come_from=dl" target="_blank"><img border="0" alt="注册" src="/images/user_loginbtn2.jpg"></a></td>
+                      </tr>
+                   </table>
+                   </form>
+           </div>
+           <div class="middleBox_left fl" id="middleBox_left2">
+               <h2>【看看会员们正在干什么】</h2>
+<div class="memberlist">
+<p>
+<a href="/user/jansion1-history-1329630.html" target=_blank><span class="blue">jansion1</span></a>正在<font color=#339966>下载</font><a href="/download/armv7-m_-pdf-ic-39817.html" title="2016-01-06 13:29:03"  class="orange" target=_blank>ARMv7-M_体系结构应用程序级参考手册.pdf</a>&nbsp;</p>
+<p>
+<a href="/user/chen_xian_sheng-history-1331448.html" target=_blank><span class="blue">chen_xian_sheng</span></a>正在<font color=#339966>下载</font><a href="/download/ia4432-pdf-ic-67071.html" title="2016-01-06 13:28:14"  class="orange" target=_blank>IA4432中文手册完整版(带书签).pdf</a>&nbsp;</p>
+<p>
+<a href="/user/ming_hu-history-1296596.html" target=_blank><span class="blue">ming_hu</span></a>正在<font color=#339966>下载</font><a href="/download/arduino-pdf-ic-172964.html" title="2016-01-06 13:27:39"  class="orange" target=_blank>Arduino机器人制作入门教程.pdf</a>&nbsp;</p>
+<p>
+<a href="/user/happyboy226-history-866067.html" target=_blank><span class="blue">happyboy226</span></a>正在<font color=#339966>下载</font><a href="/download/21ic-code-ic-182328.html" title="2016-01-06 13:20:59"  class="orange" target=_blank>自举电路应用.pdf</a>&nbsp;</p>
+<p>
+<a href="/user/21ic-user-history-1583234.html" target=_blank><span class="blue">@超哥</span></a>正在<font color=#339966>下载</font><a href="/download/dxp-rar-ic-102013.html" title="2016-01-06 13:18:02"  class="orange" target=_blank>DXP常用元件库.rar</a>&nbsp;</p>
+<p>
+<a href="/user/fghgdd-history-1742376.html" target=_blank><span class="blue">fghgdd</span></a>正在<font color=#339966>下载</font><a href="/download/21ic-code-ic-123357.html" title="2016-01-06 13:14:51"  class="orange" target=_blank>车票管理系统.doc</a>&nbsp;</p>
+<p>
+<a href="/user/nikel-history-618511.html" target=_blank><span class="blue">nikel</span></a>正在<font color=#339966>下载</font><a href="/download/mosfet-10-pdf-ic-180479.html" title="2016-01-06 13:12:05"  class="orange" target=_blank>MOSFET的10种驱动电路图.pdf</a>&nbsp;</p>
+<p>
+<a href="/user/21ic-user-history-1285020.html" target=_blank><span class="blue">kceo</span></a>正在<font color=#339966>下载</font><a href="/download/stsw-stm8069-zip-ic-125916.html" title="2016-01-06 13:09:53"  class="orange" target=_blank>stsw-stm8069.zip</a>&nbsp;</p>
+<p>
+<a href="/user/rensheng10-history-250719.html" target=_blank><span class="blue">rensheng10</span></a>正在<font color=#339966>下载</font><a href="/download/saber-pdf-ic-92463.html" title="2016-01-06 13:09:04"  class="orange" target=_blank>Saber仿真开关电源设计.pdf</a>&nbsp;</p>
+<p>
+<a href="/user/524772604-history-1742372.html" target=_blank><span class="blue">524772604</span></a>正在<font color=#339966>下载</font><a href="/download/51-rar-rar-ic-181547.html" title="2016-01-06 13:02:19"  class="orange" target=_blank>51单片机带闹钟可调时间的电子时钟程序设计.rar.rar</a>&nbsp;</p>
+<p>
+<a href="/user/gaoqingbao-history-762308.html" target=_blank><span class="blue">GaoQingbao</span></a>正在<font color=#339966>下载</font><a href="/download/mosfet-10-pdf-ic-180479.html" title="2016-01-06 12:50:59"  class="orange" target=_blank>MOSFET的10种驱动电路图.pdf</a>&nbsp;</p>
+<p>
+<a href="/user/d101426864-history-1740462.html" target=_blank><span class="blue">d101426864</span></a>正在<font color=#339966>下载</font><a href="/download/-eda-cadence_allegro-pdf-ic-108828.html" title="2016-01-06 12:40:57"  class="orange" target=_blank>中兴EDA手册cadence_allegro教程.pdf</a>&nbsp;</p>
+<p>
+<a href="/user/21ic-user-history-1740606.html" target=_blank><span class="blue">劳资哦</span></a>正在<font color=#339966>下载</font><a href="/download/21ic-code-ic-50973.html" title="2016-01-06 12:38:00"  class="orange" target=_blank>[毕业设计]数控直流稳压电源完整论文.rar</a>&nbsp;</p>
+<p>
+<a href="/user/21ic-user-history-514264.html" target=_blank><span class="blue">7456</span></a>正在<font color=#339966>下载</font><a href="/download/21ic-code-ic-180389.html" title="2016-01-06 12:35:43"  class="orange" target=_blank>脉冲激光测距系统及其算法研究.pdf</a>&nbsp;</p>
+<p>
+<a href="/user/sailorx-history-931650.html" target=_blank><span class="blue">sailorx</span></a>正在<font color=#339966>下载</font><a href="/download/verilog-hdl-rar-ic-85149.html" title="2016-01-06 12:35:42"  class="orange" target=_blank>Verilog HDL数字设计与综合 夏宇闻译（第二版）.rar</a>&nbsp;</p>
+...
+</div>	
+           </div>
+          </div> 
+         <div class="middleBoxbottom"></div> 
+    </div> 
+ </div>  
+ 
+ </div> 
+<script src="/js/base.js"> </script>
+<div class="footer"> 
+      <div class="footerad">
+	  <!--<iframe marginheight="0" marginwidth="0" frameborder="0" width="745" height="130" scrolling="no" src="http://afp21ic.qtmojo.com/main/adfshow?user=Afp21ic|dl|745x130_banner&db=afp21ic&border=0&local=yes">
+</iframe>-->
+      <iframe marginheight="0" marginwidth="0" frameborder="0" width="745" height="130" scrolling="no" src="http://21icim.qtmojo.com/main/s?user=21ic|DL|up_tuijian&db=21icim&border=0&local=yes"></iframe>
+      </div>
+	  <div class="footnav"> 
+	  	<ul>
+			<li>本站上的所有资源均为源于网上收集或者由用户自行上传，仅供学习和研究使用，无任何商业目的，版权归原作如有侵权，请 <A HREF="mailto:zhaobin@21ic.com" class="red">来信指出</A>，本站将立即改正。
+			</li>
+			
+		</ul>
+		<ul>
+			<li><a target="_blank" href="http://www.21ic.com//copyright/about.htm">本站介绍</a></li>
+			<li><a rel="nofollow" target="_blank" href="http://www.21ic.com/copyright/hz.htm">合作联络</a></li>
+			<li><a rel="nofollow" target="_blank" href="http://www.21ic.com/copyright/tg.htm">欢迎投稿</a></li>
+			<li><a rel="nofollow" target="_blank" href="http://www.21ic.com//copyright/ys.htm">隐私声明</a></li>
+			<li><a rel="nofollow" target="_blank" href="http://www.21ic.com//copyright/ad.htm">广告业务</a></li>
+			<li><a rel="nofollow" target="_blank" href="http://www.21ic.com//copyright/contact.htm">联系我们</a></li>
+			<li class="else"><a target="_blank" href="http://www.21ic.com/mobile/">手机客户端下载</a></li>
+		</ul>
+	  </div>
+	  <div class="copyright"> 
+		<ul>
+			<li class="blue">ICP许可证号：京ICP证070360号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;21IC电子网 2000-2015 版权所有</li>
+		    <li style="color: rgb(255, 0, 0);">公安部备案号：1101081962</li>
+		</ul>
+      </div>
+</div>	
+
+
+<script>
+$(function(){	
+	$("#logindl").click(function(e){
+		$.colorbox({ transition:"none",href:'/index.php?act=user.login_ajax',opacity:0.8,scrolling:false,width:"520px", height:"300px"});	
+	});
+});
+</script>
+<script src="http://bbs.21ic.com/api/hdtj_dl.js?" + Math.random(); ></script> 
+<script src="/ads/ad90x300.js"></script>
+<div style="display:none">
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F77b58db1e4bc572516ab5fe31529b92e' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+<script type="text/javascript"> var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www."); document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E")); </script> <script type="text/javascript"> try { var pageTracker = _gat._getTracker("UA-11559703-1"); pageTracker._trackPageview(); } catch(err) {}</script>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-6402539-1");
+pageTracker._trackPageview();
+} catch(err) {}
+</script>
+
+<script type="text/javascript">
+    var _21icProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _21icProtocol + "tj.21ic.com/sn.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</div>
+
+
+
+
+<!-- footer end -->
+</div> 
+<!-- wrap end -->
+</body>
+</html>

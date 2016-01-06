@@ -1,0 +1,4 @@
+
+<Project Header="Project 'I2S_CODEC'" Path=".\I2S_Audio_Codec.rprj" Project="Yes" OutputFile="" sate="96" ActiveApp="I2S_Audio_Codec" >
+	<ApplicationBuild Header="I2S_Audio_Codec" Extern=".\I2S_Audio_Codec.rapp" Path=".\I2S_Audio_Codec.rapp" OutputFile=".\STM3210E-EVAL\I2S_Audio_Codec.elf" sate="98" Config="STM3210E-EVAL" />
+</Project>

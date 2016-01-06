@@ -97,19 +97,6 @@ GraphEnabled=0
 ShowTimeLog=1
 ShowTimeSum=1
 SumSortOrder=0
-[Disassemble mode]
-mode=0
-[Breakpoints2]
-Bp0=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\driver\senor\sd.c}.92.2" 0 0 1 "" 0 "" 0
-Bp1=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\utility\mp3\df_mp3play.c}.18.1" 0 0 1 "" 0 "" 0
-Bp2=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\utility\mp3\df_mp3play.c}.95.3" 0 0 1 "" 0 "" 0
-Bp3=_ 0 "EMUL_CODE" "0x0800281E" 0 0 1 "" 0 "" 0
-Bp4=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\driver\stm\df_usart1.c}.12.5" 0 0 1 "" 0 "" 0
-Bp5=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\driver\stm\df_usart1.c}.12.5" 0 0 1 "" 0 "" 0
-Bp6=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\user\main.c}.21.5" 0 0 1 "" 0 "" 0
-Bp7=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\user\main.c}.27.5" 0 0 1 "" 0 "" 0
-Bp8=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\user\main.c}.20.5" 0 0 1 "" 0 "" 0
-Count=9
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
@@ -117,9 +104,6 @@ Category=_ 0
 [TermIOLog]
 LoggingEnabled=_ 0
 LogFile=_ ""
-[Aliases]
-Count=0
-SuppressDialog=0
 [CallStackLog]
 Enabled=0
 [PowerProbe]
@@ -132,3 +116,18 @@ Mode=3
 Graph=0
 Symbiont=0
 Exclusions=
+[Disassemble mode]
+mode=0
+[Breakpoints2]
+Bp0=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\driver\senor\sd.c}.92.2" 0 0 1 "" 0 "" 0
+Bp1=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\utility\mp3\df_mp3play.c}.19.1" 0 0 1 "" 0 "" 0
+Bp2=_ 0 "EMUL_CODE" "0x0800281E" 0 0 1 "" 0 "" 0
+Bp3=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\driver\stm\df_usart1.c}.12.1" 0 0 1 "" 0 "" 0
+Bp4=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\driver\stm\df_usart1.c}.12.5" 0 0 1 "" 0 "" 0
+Bp5=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\user\main.c}.21.1" 0 0 1 "" 0 "" 0
+Bp6=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\user\main.c}.23.5" 0 0 1 "" 0 "" 0
+Bp7=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\user\main.c}.20.5" 0 0 1 "" 0 "" 0
+Count=8
+[Aliases]
+Count=0
+SuppressDialog=0

@@ -1,7 +1,30 @@
 // *****************[ STK message constants ]***************************
 
+
 #define MESSAGE_START                       0x1B        //= ESC = 27 decimal
 #define TOKEN                               0x0E
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // *****************[ STK general command constants ]**************************
 

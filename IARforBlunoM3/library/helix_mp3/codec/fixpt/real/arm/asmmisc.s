@@ -33,15 +33,39 @@
 ; *  
 ; * ***** END LICENSE BLOCK ***** */ 
 
-	AREA	|.text|, CODE, READONLY
-
-; int xmp3_MULSHIFT32(int x, int y);
-
-	EXPORT	xmp3_MULSHIFT32
+    MODULE Module2
+    SECTION .text:CODE
+    
+    PUBLIC xmp3_MULSHIFT32
+    PUBLIC xmp3_FASTABS
+	THUMB
 	
-xmp3_MULSHIFT32
+   
+; int xmp3_MULSHIFT32(int x, int y)
 
-	smull	r2, r0, r1, r0
-	mov		pc, lr
 
-	END
+;.cpu cortex-m3
+;.fpu softvfp   
+;.syntax unified 
+;.thumb
+;.text
+    ; .global xmp3_MULSHIFT32
+    ; .thumb_func
+  
+xmp3_MULSHIFT32 
+	smull	R2, R0, R1, R0
+;	mov		pc, lr	  // KJ changed to BX for Cortex
+	BX lr
+
+
+	;.global	xmp3_FASTABS
+    ;.thumb_func
+xmp3_FASTABS
+	mov R1, R0
+	mov R0, #0x0
+	eor R0, R1, R1, asr # 31
+	sub R0, R0, R1, asr # 31
+	bx lr
+ 
+    END
+

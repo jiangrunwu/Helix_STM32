@@ -1,5 +1,1 @@
----- get_fattime Matches (4 in 4 files) ----
-diskio.c (library\fat32):int get_fattime(void)
-ff.c (library\fat32):#define GET_FATTIME()	get_fattime()
-ff.h (library\fat32):DWORD get_fattime (void);
-ffconf.h (library\fat32):/  When timestamp feature is enabled (_FS_NORTC	== 0), get_fattime() function need
+---- __CW32__ Matches (0 in 0 files) ----

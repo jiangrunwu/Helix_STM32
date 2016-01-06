@@ -1,6 +1,6 @@
 #include "ffconf.h"
 #include "ff.h"
-
+#include "df_i2c.h"
 
 
 
@@ -26,6 +26,8 @@ int  bsp_init(void){
     }
     //initailize the usart1
     DF_Usart1Init();    
+    
+   
     return res;
 
 }
