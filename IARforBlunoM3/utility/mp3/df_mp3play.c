@@ -19,6 +19,12 @@ void mp3_i2s_dma_tx_callback(void) {
 
 void mp3_fill_buffer(uint16_t* buf,uint16_t size,uint8_t nch){
 
+  	u16 i; 
+	u16 *p;
+
+  
+  
+  
 }
 
 uint8_t mp3_id3v1_decode(uint8_t* buf,__mp3ctrl *pctrl){
@@ -187,7 +193,10 @@ uint8_t mp3_play_song(uint8_t* fname){
 	int outofdata=0;//超出数据范围
 	int bytesleft=0;//buffer还剩余的有效数据
 	u32 br=0; 
-	int err=0;  
+	int err=0; 
+    
+    u8 rest;
+    FIL fpcm;
 	
  	mp3ctrl=malloc(sizeof(__mp3ctrl)); 
 	buffer=malloc(MP3_FILE_BUF_SZ); 	//申请解码buf大小
@@ -250,8 +259,13 @@ uint8_t mp3_play_song(uint8_t* fname){
 				res=AP_OK;	//播放完成
 				break;
 			}
-			bytesleft+=br;	//buffer里面有多少有效MP3数据?
-			err=0;			
+			bytesleft+=br;	//buffer里面有多少有效MP3数据?    first :byteleft = 2048
+			err=0;
+
+
+            // create the file to save the pcm data to play  on pc .mode ;
+           // rest = f_open(&fpcm, "1:newpcm1", FA_CREATE_NEW | FA_WRITE);
+            
 			while(!outofdata)//没有出现数据异常(即可否找到帧同步字符)
 			{
 				offset=MP3FindSyncWord(readptr,bytesleft);//在readptr位置,开始查找同步字符
@@ -263,6 +277,7 @@ uint8_t mp3_play_song(uint8_t* fname){
 					readptr+=offset;		//MP3读指针偏移到同步字符处.
 					bytesleft-=offset;		//buffer里面的有效数据个数,必须减去偏移量
 					err=MP3Decode(mp3decoder,&readptr,&bytesleft,(short*)audiodev.tbuf,0);//解码一帧MP3数据
+                   // rest = f_write(&fpcm, audiodev.tbuf, )
 					if(err!=0)
 					{
 						printf("decode error:%d\r\n",err);

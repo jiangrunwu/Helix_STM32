@@ -9,7 +9,7 @@ TriggerName=main
 LimitSize=0
 ByteLimit=50
 [DebugChecksum]
-Checksum=-588671982
+Checksum=-829907414
 [CodeCoverage]
 Enabled=_ 0
 [Exceptions]
@@ -54,8 +54,11 @@ ITMportsLogFile=0
 ITMlogFile=$PROJ_DIR$\ITM.log
 [struct_types]
 Fmt0=__audiodev-i2sbuf1	4	0
+Fmt1=__mp3ctrl-datastart	4	0
 [watch_formats]
-Fmt0={W}1:ch	5	0
+Fmt0={W}1:buf	4	0
+Fmt1={W}1:buffer	4	0
+Fmt2={W}1:ch	5	0
 [Trace2]
 Enabled=0
 ShowSource=0
@@ -101,9 +104,6 @@ SumSortOrder=0
 LoggingEnabled=_ 0
 LogFile=_ ""
 Category=_ 0
-[TermIOLog]
-LoggingEnabled=_ 0
-LogFile=_ ""
 [CallStackLog]
 Enabled=0
 [PowerProbe]
@@ -122,12 +122,21 @@ mode=0
 Bp0=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\driver\senor\sd.c}.92.2" 0 0 1 "" 0 "" 0
 Bp1=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\utility\mp3\df_mp3play.c}.19.1" 0 0 1 "" 0 "" 0
 Bp2=_ 0 "EMUL_CODE" "0x0800281E" 0 0 1 "" 0 "" 0
-Bp3=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\driver\stm\df_usart1.c}.12.1" 0 0 1 "" 0 "" 0
-Bp4=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\driver\stm\df_usart1.c}.12.5" 0 0 1 "" 0 "" 0
-Bp5=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\user\main.c}.21.1" 0 0 1 "" 0 "" 0
-Bp6=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\user\main.c}.23.5" 0 0 1 "" 0 "" 0
-Bp7=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\user\main.c}.20.5" 0 0 1 "" 0 "" 0
-Count=8
+Bp3=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\user\main.c}.23.5" 0 0 1 "" 0 "" 0
+Bp4=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\user\main.c}.24.5" 0 0 1 "" 0 "" 0
+Bp5=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\user\main.c}.21.5" 0 0 1 "" 0 "" 0
+Bp6=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\utility\mp3\df_mp3play.c}.108.4" 0 0 1 "" 0 "" 0
+Bp7=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\utility\mp3\df_mp3play.c}.105.4" 0 0 1 "" 0 "" 0
+Bp8=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\utility\mp3\df_mp3play.c}.110.4" 0 0 1 "" 0 "" 0
+Bp9=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\utility\mp3\df_mp3play.c}.236.3" 0 0 1 "" 0 "" 0
+Bp10=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\utility\mp3\df_mp3play.c}.250.4" 0 0 1 "" 0 "" 0
+Bp11=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\utility\mp3\df_mp3play.c}.206.2" 0 0 1 "" 0 "" 0
+Bp12=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\utility\mp3\df_mp3play.c}.279.6" 0 0 1 "" 0 "" 0
+Bp13=_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\utility\mp3\df_mp3play.c}.271.12" 0 0 1 "" 0 "" 0
+Count=14
 [Aliases]
 Count=0
 SuppressDialog=0
+[TermIOLog]
+LoggingEnabled=_ 0
+LogFile=_ ""

@@ -371,6 +371,7 @@ static int IMDCT36(int *xCurr, int *xPrev, int *y, int btCurr, int btPrev, int b
 	int acc1, acc2, s, d, t, mOut;
 	int xo, xe, c, *xp, yLo, yHi;
 	const int *cp, *wp;
+ 
 
 	acc1 = acc2 = 0;
 	xCurr += 17;
@@ -428,6 +429,7 @@ static int IMDCT36(int *xCurr, int *xPrev, int *y, int btCurr, int btPrev, int b
 			yHi = (s + (MULSHIFT32(t, *wp++) << 2));
 			y[(i)*NBANDS]    = 	yLo;
 			y[(17-i)*NBANDS] =  yHi;
+            
 			mOut |= FASTABS(yLo);
 			mOut |= FASTABS(yHi);
 		}

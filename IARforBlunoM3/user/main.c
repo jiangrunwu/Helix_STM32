@@ -15,12 +15,13 @@ int main(void)
     FRESULT res;
     FIL fs;
     char buf2[100];
+    
     uint32_t tmpreg;
 
     bsp_init();
   
     printf("hello world\n");
-    mp3_play_song("1:liuxijun.mp3");
+    mp3_play_song("1:wait.mp3");
 
     while (1)
       
