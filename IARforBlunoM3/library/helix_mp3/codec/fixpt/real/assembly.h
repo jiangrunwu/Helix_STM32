@@ -107,20 +107,6 @@ typedef long long Word64;
 typedef __int64 Word64;
 #endif
 
-static inline Word64 MADD64(Word64 sum, int x, int y)
-{
-	unsigned int sumLo = ((unsigned int *)&sum)[0];
-	int sumHi = ((int *)&sum)[1];
-
-	__asm {
-		mov		eax, x
-		imul	y
-		add		eax, sumLo
-		adc		edx, sumHi
-	}
-
-	/* equivalent to return (sum + ((__int64)x * y)); */
-}
 
 static inline Word64 SHL64(Word64 x, int n)
 {
@@ -148,38 +134,6 @@ static inline Word64 SHL64(Word64 x, int n)
 		__asm {
 			xor		edx, edx
 			xor		eax, eax
-		}
-	}
-}
-
-static inline Word64 SAR64(Word64 x, int n)
-{
-	unsigned int xLo = ((unsigned int *)&x)[0];
-	int xHi = ((int *)&x)[1];
-	unsigned char nb = (unsigned char)n;
-
-	if (n < 32) {
-		__asm {
-			mov		edx, xHi
-			mov		eax, xLo
-			mov		cl, nb
-			shrd	eax, edx, cl
-			sar		edx, cl
-		}
-	} else if (n < 64) {
-		/* sar masks cl to 0x1f */
-		__asm {
-			mov		edx, xHi
-			mov		eax, xHi
-			mov		cl, nb
-			sar		edx, 31
-			sar		eax, cl
-		}
-	} else {
-		__asm {
-			sar		xHi, 31
-			mov		eax, xHi
-			mov		edx, xHi
 		}
 	}
 }
@@ -229,6 +183,34 @@ extern int MULSHIFT32(int x, int y);
 
 #define FASTABS	xmp3_FASTABS
 int FASTABS(int x);
+
+
+static inline Word64 MADD64(Word64 sum, int x, int y)
+{
+
+	return sum + ((Word64)x*y);
+
+	/* equivalent to return (sum + ((__int64)x * y)); */
+}
+
+
+
+static inline Word64 SAR64(Word64 x, int n)
+{
+	return x>>n;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #if 0

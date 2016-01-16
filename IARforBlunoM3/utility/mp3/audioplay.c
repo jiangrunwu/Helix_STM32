@@ -12,7 +12,8 @@ extern int DF_Usart1Init(void);
 
 //音乐播放控制器
 __audiodev audiodev;	  
- 
+
+
 
 //开始音频播放
 void audio_start(void)
@@ -26,6 +27,7 @@ void audio_stop(void)
 	audiodev.status=0;
 	I2S_Play_Stop();
 }  
+
 //得到path路径下,目标文件的总个数
 //path:路径		    
 //返回值:总有效文件数

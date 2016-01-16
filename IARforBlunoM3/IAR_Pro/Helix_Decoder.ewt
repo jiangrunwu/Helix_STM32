@@ -277,6 +277,9 @@
         <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\mp3tabs.c</name>
       </file>
       <file>
+        <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\polyphase.c</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\..\library\helix_mp3\codec\fixpt\real\scalfact.c</name>
       </file>
       <file>

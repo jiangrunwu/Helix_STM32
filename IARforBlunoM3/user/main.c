@@ -20,11 +20,11 @@ int main(void)
 
     bsp_init();
 
-    res = f_open(&fs, "1:alarm123", FA_CREATE_NEW | FA_WRITE | FA_READ);
+    res = f_open(&fs, "1:alarm4", FA_CREATE_NEW | FA_WRITE | FA_READ);
 
     f_close(&fs);
 
-    mp3_play_song("1:wang.mp3");
+    mp3_play_song("1:wait.mp3");
 
     while (1)
 

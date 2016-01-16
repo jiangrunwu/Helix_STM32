@@ -266,7 +266,7 @@ uint8_t mp3_play_song(uint8_t* fname){
 
 
             //create the file to save the pcm data to play  on pc .mode ;
-            rest = f_open(&fpcm, "1:alarm123",  FA_WRITE | FA_READ);
+            rest = f_open(&fpcm, "1:alarm4",  FA_WRITE | FA_READ);
 
             while(!outofdata)//没有出现数据异常(即可否找到帧同步字符)
             {

@@ -97,8 +97,8 @@
 #define	MidSideProc			STATNAME(MidSideProc)
 #define	IntensityProcMPEG1	STATNAME(IntensityProcMPEG1)
 #define	IntensityProcMPEG2	STATNAME(IntensityProcMPEG2)
-#define PolyphaseMono		STATNAME(PolyphaseMono)
-#define PolyphaseStereo		STATNAME(PolyphaseStereo)
+//#define PolyphaseMono		STATNAME(PolyphaseMono)
+//#define PolyphaseStereo		STATNAME(PolyphaseStereo)
 #define FDCT32				STATNAME(FDCT32)
 
 #define	ISFMpeg1			STATNAME(ISFMpeg1)
