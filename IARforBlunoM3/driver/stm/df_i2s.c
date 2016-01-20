@@ -8,6 +8,40 @@
 
 
 
+static void NVIC_Config(void)
+{
+  NVIC_InitTypeDef NVIC_InitStructure;
+
+  /* SPI2 IRQ Channel configuration */
+  NVIC_InitStructure.NVIC_IRQChannel = SPI2_IRQn;
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+  NVIC_Init(&NVIC_InitStructure);
+}
+
+static void GPIO_Config(void)
+{
+  GPIO_InitTypeDef GPIO_InitStructure;
+
+  /* Enable GPIOB, GPIOC and AFIO clock */
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOC |
+                          RCC_APB2Periph_AFIO, ENABLE);
+
+  /* I2S2 SD, CK and WS pins configuration */
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_15;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+  GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+  /* I2S2 MCK pin configuration */
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6;
+  GPIO_Init(GPIOC, &GPIO_InitStructure);
+
+}
+
+
+
 /**
   * @brief  Configure the I2S Peripheral.
   * @param  Standard: I2S_Standard_Phillips, I2S_Standard_MSB or I2S_Standard_LSB
@@ -21,6 +55,13 @@ void I2S2_Init(uint16_t Standard, uint16_t MCLKOutput, uint16_t AudioFreq)
 
   I2S_InitTypeDef I2S_InitStructure;
 
+
+   /* Configure I2S interrupt Channel */
+ // NVIC_Config();
+  
+  //config the GPIO pin for I2S
+  GPIO_Config();
+  
   /* Enable I2S2 APB1 clock */
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI2, ENABLE);
 
@@ -44,6 +85,11 @@ void I2S2_Init(uint16_t Standard, uint16_t MCLKOutput, uint16_t AudioFreq)
 
 
 } 
+
+
+
+
+
 //I2S2ext配置,用于全双工模式配置,需要时,在I2S2_Init之后调用
 //std:I2S标准,00,飞利浦标准;01,MSB对齐标准(右对齐);10,LSB对齐标准(左对齐);11,PCM标准
 //mode:I2S工作模式,00,从机发送;01,从机接收;I2S2ext仅用于从机模式

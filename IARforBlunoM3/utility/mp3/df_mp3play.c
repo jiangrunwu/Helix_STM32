@@ -183,6 +183,11 @@ void mp3_get_curtime(FIL*fx,__mp3ctrl *mp3x)
 }
 
 short tbuf[2304];
+
+
+void  I2S_send_data(uint16_t *txbuf, int size);
+
+
 uint8_t mp3_play_song(uint8_t* fname){
 
     HMP3Decoder mp3decoder;
@@ -233,10 +238,11 @@ uint8_t mp3_play_song(uint8_t* fname){
 
 
         WM8978_I2S_Cfg(2,0);	//飞利浦标准,16位数据长度
-
-        I2S2_SampleRate_Set(mp3ctrl->samplerate);		//设置采样率 
-        I2S2_TX_DMA_Init(audiodev.i2sbuf1,audiodev.i2sbuf2,mp3ctrl->outsamples);//配置TX DMA
-        //i2s_tx_callback=mp3_i2s_dma_tx_callback;		//回调函数指向mp3_i2s_dma_tx_callback  jansion
+        
+        I2S2_Init(I2S_Standard_Phillips, I2S_MCLKOutput_Enable, mp3ctrl->samplerate);
+  
+       // I2S2_TX_DMA_Init(audiodev.i2sbuf1,audiodev.i2sbuf2,mp3ctrl->outsamples);//配置TX DMA
+        i2s_tx_callback=mp3_i2s_dma_tx_callback;		//回调函数指向mp3_i2s_dma_tx_callback  jansion
         mp3decoder=MP3InitDecoder(); 					//MP3解码申请内存
         res=f_open(audiodev.file,(char*)fname,FA_READ);	//打开文件
     }
@@ -266,7 +272,7 @@ uint8_t mp3_play_song(uint8_t* fname){
 
 
             //create the file to save the pcm data to play  on pc .mode ;
-            rest = f_open(&fpcm, "1:alarm4",  FA_WRITE | FA_READ);
+          //  rest = f_open(&fpcm, "1:alarm4",  FA_WRITE | FA_READ);
 
             while(!outofdata)//没有出现数据异常(即可否找到帧同步字符)
             {
@@ -291,8 +297,8 @@ uint8_t mp3_play_song(uint8_t* fname){
                         {
                             mp3ctrl->bitrate=mp3frameinfo.bitrate; 
                         }
-                        rest = f_write(&fpcm,audiodev.tbuf,mp3frameinfo.outputSamps * mp3frameinfo.nChans ,&br);
-                        rest = f_sync(&fpcm);
+                       // rest = f_write(&fpcm,audiodev.tbuf,mp3frameinfo.outputSamps * mp3frameinfo.nChans ,&br);
+                       // rest = f_sync(&fpcm);
                         /*
                         rest = f_lseek(&fpcm, (&fpcm)->fptr - mp3frameinfo.outputSamps * mp3frameinfo.nChans);
 
@@ -303,9 +309,9 @@ uint8_t mp3_play_song(uint8_t* fname){
                             printf("error");
                         */
 
+                        I2S_send_data((u16 *)audiodev.tbuf, mp3frameinfo.outputSamps * mp3frameinfo.nChans);
 
-
-                        mp3_fill_buffer((u16*)audiodev.tbuf,mp3frameinfo.outputSamps,mp3frameinfo.nChans);//填充pcm数据
+                        //mp3_fill_buffer((u16*)audiodev.tbuf,mp3frameinfo.outputSamps,mp3frameinfo.nChans);//填充pcm数据
 
                     }
                     if(bytesleft<MAINBUF_SIZE*2)//当数组内容小于2倍MAINBUF_SIZE的时候,必须补充新的数据进来.

@@ -11,7 +11,7 @@ extern void (*i2s_tx_callback)(void);		//IIS TX回调函数指针
 extern void (*i2s_rx_callback)(void);		//IIS RX回调函数指针 
 
 
-void I2S2_Init(uint16_t Standard, uint16_t MCLKOutput, uint16_t AudioFreq); 
+void I2S2_Init(uint16_t Standard, uint16_t MCLKOutput, uint16_t ); 
 void I2S2ext_Init(uint8_t std,uint8_t mode,uint8_t cpol,uint8_t datalen);
 uint8_t I2S2_SampleRate_Set(uint32_t samplerate);
 

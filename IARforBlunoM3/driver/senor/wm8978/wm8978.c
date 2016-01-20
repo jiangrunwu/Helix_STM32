@@ -50,45 +50,22 @@ static uint16_t WM8978_REGVAL_TBL[58]=
 //WM8978初始化
 //返回值:0,初始化正常
 //    其他,错误代码
-void GPIO_Config(void)
-{
-  GPIO_InitTypeDef GPIO_InitStructure;
-
-  /* Enable GPIOB, GPIOC and AFIO clock */
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB |  RCC_APB2Periph_GPIOC|
-                         RCC_APB2Periph_AFIO, ENABLE);
-
-  /* I2S2 SD, MCK and WS pins configuration */
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_15;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
-  GPIO_Init(GPIOB, &GPIO_InitStructure);
-
-
-  /* I2S2 MCK pin configuration */
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;
-  GPIO_Init(GPIOC, &GPIO_InitStructure);
-
-
-
-}
-
 
 uint8_t WM8978_Init(void)
 {
 	uint8_t res;
     
-    //sd ck, mck, ws
-    GPIO_Config();
-    //初始化I2S
-    I2S_Config(I2S_Standard_Phillips, I2S_MCLKOutput_Enable, I2S_AudioFreq_8k);
+   
     //初始化I2C
 	DF_IIC_Init();
-   
+    
 	res=WM8978_Write_Reg(0,0);	//软复位WM8978
-	if(res)return 1;			//发送指令失败,WM8978异常
+    
+	if(res)
+      return 1;			//发送指令失败,WM8978异常
 	//以下为通用设置
 	WM8978_Write_Reg(1,0X1B);	//R1,MICEN设置为1(MIC使能),BIASEN设置为1(模拟器工作),VMIDSEL[1:0]设置为:11(5K)
+    
 	WM8978_Write_Reg(2,0X1B0);	//R2,ROUT1,LOUT1输出使能(耳机可以工作),BOOSTENR,BOOSTENL使能
 	WM8978_Write_Reg(3,0X6C);	//R3,LOUT2,ROUT2输出使能(喇叭工作),RMIX,LMIX使能	
 	WM8978_Write_Reg(6,0);		//R6,MCLK由外部提供
@@ -98,7 +75,11 @@ uint8_t WM8978_Init(void)
 	WM8978_Write_Reg(49,3<<1);	//R49,SPEAKER BOOST使能，TSDEN,开启过热保护  
 	WM8978_Write_Reg(10,1<<3);	//R10,SOFTMUTE关闭,128x采样,最佳SNR 
 	WM8978_Write_Reg(14,1<<3);	//R14,ADC 128x采样率
+
 	return 0;
+    
+    
+    
 } 
 //WM8978写寄存器
 //reg:寄存器地址
@@ -107,15 +88,24 @@ uint8_t WM8978_Init(void)
 //    其他,错误代码
 uint8_t WM8978_Write_Reg(uint8_t reg,uint16_t val)
 { 
+  
 	DF_IIC_Start(); 
+    I2C_DELAY();
 	DF_IIC_Send_Byte((WM8978_ADDR<<1)|0);//发送器件地址+写命令	 
-	if(DF_IIC_Wait_Ack())return 1;	//等待应答(成功?/失败?) 
+    I2C_DELAY();
+	if(!DF_IIC_Wait_Ack())
+      return 1;	//等待应答(成功?/失败?) 
     DF_IIC_Send_Byte((reg<<1)|((val>>8)&0X01));//写寄存器地址+数据的最高位
-	if(DF_IIC_Wait_Ack())return 2;	//等待应答(成功?/失败?) 
+    I2C_DELAY();
+	if(!DF_IIC_Wait_Ack())
+      return 2;	//等待应答(成功?/失败?) 
 	DF_IIC_Send_Byte(val&0XFF);	//发送数据
-	if(DF_IIC_Wait_Ack())return 3;	//等待应答(成功?/失败?) 
+    I2C_DELAY();
+	if(!DF_IIC_Wait_Ack())
+      return 3;	//等待应答(成功?/失败?) 
     DF_IIC_Stop();
 	WM8978_REGVAL_TBL[reg]=val;	//保存寄存器值到本地
+    I2C_DELAY();
 	return 0;	
 }  
 //WM8978读寄存器
