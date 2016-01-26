@@ -54,6 +54,16 @@ void I2S2_Init(uint16_t Standard, uint16_t MCLKOutput, uint16_t AudioFreq)
 {
 
   I2S_InitTypeDef I2S_InitStructure;
+  DMA_InitTypeDef DMA_InitStructure;
+  NVIC_InitTypeDef NVIC_InitStructure;
+  
+  
+  
+  
+  
+  
+    /*open DMA clock*/
+  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
 
 
    /* Configure I2S interrupt Channel */
@@ -77,12 +87,38 @@ void I2S2_Init(uint16_t Standard, uint16_t MCLKOutput, uint16_t AudioFreq)
   I2S_InitStructure.I2S_CPOL = I2S_CPOL_Low;
   I2S_Init(SPI2, &I2S_InitStructure);
 
+   DMA_DeInit(DMA1_Channel5);
+  /* DMA Channel configuration ----------------------------------------------*/
+  DMA_InitStructure.DMA_PeripheralBaseAddr = (u32)(0x4000380c);
+  DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralDST;
+  DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+  DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
+  DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;
+  DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord;
+  DMA_InitStructure.DMA_Priority = DMA_Priority_High;
+  DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;
+  DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;
+
+  DMA_Init(DMA1_Channel5, &DMA_InitStructure);
+ 
+  SPI_I2S_DMACmd(SPI2, SPI_I2S_DMAReq_Tx, ENABLE);
+  /* Enable SPI DMA Tx request */
+
+  DMA_ITConfig(DMA1_Channel5, DMA_IT_TC, ENABLE);
+  
   /* Disable the I2S2 TXE Interrupt */
   SPI_I2S_ITConfig(SPI2, SPI_I2S_IT_TXE, DISABLE);
-
+  
+   /*enable DMA1 channel 5 NVIC*/
+  NVIC_InitStructure.NVIC_IRQChannel = DMA1_Channel5_IRQn;
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+  NVIC_Init(&NVIC_InitStructure);
+  
   /* Enable the SPI2/I2S2 peripheral */
   I2S_Cmd(SPI2, ENABLE);
-
+  DMA_Cmd(DMA1_Channel5, ENABLE);
 
 } 
 
@@ -186,6 +222,13 @@ void I2S_Rec_Stop(void)
 }
 
 
+void DMA_Transmit(u32 addr, u32 size)
+{
+  DMA_Cmd(DMA1_Channel5, DISABLE);   
+  DMA1_Channel5->CMAR = addr;
+  DMA1_Channel5->CNDTR = size;
+  DMA_Cmd(DMA1_Channel5, ENABLE);
+}
 
 
 

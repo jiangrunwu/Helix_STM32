@@ -64,9 +64,19 @@ void TimeTick_Increment(void)
 
 
 
+extern uint8_t DMA_TC_FLAG;
 
+void DMA1_Channel5_IRQHandler(void) 
+{
 
+	if(DMA_GetITStatus(DMA1_IT_TC5) != RESET)
+	{
+		
+		DMA_ClearITPendingBit(DMA1_IT_TC5);
+		DMA_TC_FLAG = 1;
+	}
 
+}
 
 
 void NMI_Handler(void)

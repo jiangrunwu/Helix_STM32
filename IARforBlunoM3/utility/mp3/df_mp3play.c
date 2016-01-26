@@ -12,6 +12,31 @@
 __mp3ctrl * mp3ctrl;        //the global variable for handle the mp3 data contrl block.
 
 
+
+
+
+#define DECODERED_BUFF_SIZE          2304
+
+typedef struct buffs
+{
+	short *BufData;
+	struct buffs * Next;
+}BuffDef;
+
+BuffDef Buff[2];
+BuffDef* BuffP = &Buff[0];
+
+
+
+
+uint8_t DMA_TC_FLAG = 0;
+
+
+
+
+
+
+
 void mp3_i2s_dma_tx_callback(void) {
 
 
@@ -47,6 +72,7 @@ uint8_t mp3_id3v2_decode(uint8_t* buf,uint32_t size,__mp3ctrl *pctrl){
     u32 t;
     u32 tagsize;	//tag大小
     u32 frame_size;	//帧大小 
+
     taghead=(ID3V2_TagHead*)buf; 
     if(strncmp("ID3",(const char*)taghead->id,3)==0)//存在ID3?
     {
@@ -182,10 +208,11 @@ void mp3_get_curtime(FIL*fx,__mp3ctrl *mp3x)
     mp3x->cursec=fpos*mp3x->totsec/(fx->fsize-mp3x->datastart);	//当前播放到第多少秒了?	
 }
 
-short tbuf[2304];
 
 
 void  I2S_send_data(uint16_t *txbuf, int size);
+
+extern uint16_t I2STxBuf[2048];
 
 
 uint8_t mp3_play_song(uint8_t* fname){
@@ -200,31 +227,33 @@ uint8_t mp3_play_song(uint8_t* fname){
     int bytesleft=0;//buffer还剩余的有效数据
     u32 br=0; 
     int err=0; 
-
+    u8 start_flag = 1;
     u8 rest;
     FIL fpcm;
     int ss;
 
     mp3ctrl=malloc(sizeof(__mp3ctrl)); 
     buffer=malloc(MP3_FILE_BUF_SZ); 	//申请解码buf大小
+    Buff[0].BufData = (short *)malloc(DECODERED_BUFF_SIZE * 2);
+    Buff[1].BufData = (short *)malloc(DECODERED_BUFF_SIZE * 2);
+    
+    BuffP[0].Next = &BuffP[1];
+    BuffP[1].Next = &BuffP[0];
+    
     audiodev.file=(FIL*)malloc(sizeof(FIL));
-    audiodev.i2sbuf1=malloc(2304*2);
-    audiodev.i2sbuf2=malloc(2304*2);
-    audiodev.tbuf=malloc(2304*2);
+  
     audiodev.file_seek=mp3_file_seek;
 
-    if(!mp3ctrl||!buffer||!audiodev.file||!audiodev.i2sbuf1||!audiodev.i2sbuf2||!audiodev.tbuf)//内存申请失败
+    if(!mp3ctrl||!buffer||!audiodev.file||!BuffP[0].BufData||!BuffP[0].BufData)//内存申请失败
     {
         free( mp3ctrl);
         free( buffer);
         free( audiodev.file);
-        free( audiodev.i2sbuf1);
-        free( audiodev.i2sbuf2);
-        free( audiodev.tbuf); 
+        free(BuffP[0].BufData);
+        free(BuffP[1].BufData);
         return AP_ERR;	//错误
     } 
-    memset(audiodev.i2sbuf1,0,2304*2);	//数据清零 
-    memset(audiodev.i2sbuf2,0,2304*2);	//数据清零 
+   
     memset(mp3ctrl,0,sizeof(__mp3ctrl));//数据清零 
     res=mp3_get_info(fname,mp3ctrl); 
 
@@ -236,13 +265,12 @@ uint8_t mp3_play_song(uint8_t* fname){
         printf("samplerate:%d\r\n", mp3ctrl->samplerate);	
         printf("  totalsec:%d\r\n",mp3ctrl->totsec); 
 
-
         WM8978_I2S_Cfg(2,0);	//飞利浦标准,16位数据长度
         
         I2S2_Init(I2S_Standard_Phillips, I2S_MCLKOutput_Enable, mp3ctrl->samplerate);
   
        // I2S2_TX_DMA_Init(audiodev.i2sbuf1,audiodev.i2sbuf2,mp3ctrl->outsamples);//配置TX DMA
-        i2s_tx_callback=mp3_i2s_dma_tx_callback;		//回调函数指向mp3_i2s_dma_tx_callback  jansion
+        //i2s_tx_callback=mp3_i2s_dma_tx_callback;		//回调函数指向mp3_i2s_dma_tx_callback  jansion
         mp3decoder=MP3InitDecoder(); 					//MP3解码申请内存
         res=f_open(audiodev.file,(char*)fname,FA_READ);	//打开文件
     }
@@ -272,7 +300,7 @@ uint8_t mp3_play_song(uint8_t* fname){
 
 
             //create the file to save the pcm data to play  on pc .mode ;
-          //  rest = f_open(&fpcm, "1:alarm4",  FA_WRITE | FA_READ);
+           rest = f_open(&fpcm, "1:alarm4",  FA_WRITE | FA_READ);
 
             while(!outofdata)//没有出现数据异常(即可否找到帧同步字符)
             {
@@ -284,7 +312,7 @@ uint8_t mp3_play_song(uint8_t* fname){
                 {
                     readptr+=offset;		//MP3读指针偏移到同步字符处.
                     bytesleft-=offset;		//buffer里面的有效数据个数,必须减去偏移量
-                    err=MP3Decode(mp3decoder,&readptr,&bytesleft,(short*)audiodev.tbuf,0);//解码一帧MP3数据
+                    err=MP3Decode(mp3decoder,&readptr,&bytesleft,BuffP->BufData,0);//解码一帧MP3数据
                     // rest = f_write(&fpcm, audiodev.tbuf, )
                     if(err!=0)
                     {
@@ -297,8 +325,9 @@ uint8_t mp3_play_song(uint8_t* fname){
                         {
                             mp3ctrl->bitrate=mp3frameinfo.bitrate; 
                         }
-                       // rest = f_write(&fpcm,audiodev.tbuf,mp3frameinfo.outputSamps * mp3frameinfo.nChans ,&br);
+                       // rest = f_write(&fpcm, BuffP->BufData,mp3frameinfo.outputSamps * mp3frameinfo.nChans ,&br);
                        // rest = f_sync(&fpcm);
+                        BuffP = BuffP->Next;
                         /*
                         rest = f_lseek(&fpcm, (&fpcm)->fptr - mp3frameinfo.outputSamps * mp3frameinfo.nChans);
 
@@ -308,10 +337,29 @@ uint8_t mp3_play_song(uint8_t* fname){
                         if (ss)
                             printf("error");
                         */
+                        
+                        if (start_flag){
+                                
+                              start_flag = 0;
+                              DMA_Transmit((u32)BuffP->BufData, mp3frameinfo.outputSamps);
+                              BuffP = BuffP->Next;
+                              continue;
+                          }
 
-                        I2S_send_data((u16 *)audiodev.tbuf, mp3frameinfo.outputSamps * mp3frameinfo.nChans);
+                        while(DMA_TC_FLAG == 0){
+                            
+                                ;
+                        
+                        }
+                        
+                       // DMA_Transmit((u32)BuffP->BufData, mp3frameinfo.outputSamps);
+                        DMA_Transmit((u32)I2STxBuf, 8);
+                        BuffP = BuffP->Next;
+                        DMA_TC_FLAG = 0;
+                        
+                       // I2S_send_data((u16 *)audiodev.tbuf, mp3frameinfo.outputSamps * mp3frameinfo.nChans);
 
-                        //mp3_fill_buffer((u16*)audiodev.tbuf,mp3frameinfo.outputSamps,mp3frameinfo.nChans);//填充pcm数据
+                       //mp3_fill_buffer((u16*)audiodev.tbuf,mp3frameinfo.outputSamps,mp3frameinfo.nChans);//填充pcm数据
 
                     }
                     if(bytesleft<MAINBUF_SIZE*2)//当数组内容小于2倍MAINBUF_SIZE的时候,必须补充新的数据进来.
@@ -355,7 +403,6 @@ uint8_t mp3_play_song(uint8_t* fname){
     free( audiodev.file);
     free( audiodev.i2sbuf1);
     free( audiodev.i2sbuf2);
-    free( audiodev.tbuf);
     return res;
 
 

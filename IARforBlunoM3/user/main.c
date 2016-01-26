@@ -47,7 +47,7 @@ void  I2S_send_data(uint16_t *txbuf, int size){
 }
 
 
-
+extern void DMA_Transmit(u32 addr, u32 size);
 int main(void)
 {
 
@@ -59,23 +59,21 @@ int main(void)
 
     bsp_init();
 
-/*
-    res = f_open(&fs, "1:alarm4", FA_CREATE_NEW | FA_WRITE | FA_READ);
+   res = f_open(&fs, "1:alarm4", FA_CREATE_NEW | FA_WRITE | FA_READ);
 
     f_close(&fs);
 
     
-*/
     // res = f_open(&fs, "1:alarm4",FA_READ);
     // res = f_lseek(&fs, 0x2fda0);
      //res = f_read(&fs, I2STxBuf, 2048, &tmpreg);
          
-    //mp3_play_song("1:wait.mp3");
+    mp3_play_song("1:wait.mp3");
     WM8978_I2S_Cfg(2,0);	//飞利浦标准,16位数据长度
-    I2S2_Init(I2S_Standard_Phillips, I2S_MCLKOutput_Enable, mp3ctrl->samplerate);
-  
+   
+    DMA_Transmit((u32)I2STxBuf, 8);
     while (1)
-     I2S_send_data(I2STxBuf, 8);
+   
     
         ;
 
